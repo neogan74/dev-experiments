@@ -1,5 +1,5 @@
 package geometry
 
 func Perimeter(w, h float64) float64 {
-	return 0.0
+	return 2*w + 2*h
 }
