@@ -1,9 +1,7 @@
 package interaction
 
-const repeatCount = 5
-
-func Repeat(char string) (repeated string) {
-	for i := 0; i < repeatCount; i++ {
+func Repeat(char string, rep int) (repeated string) {
+	for i := 0; i < rep; i++ {
 		repeated += char
 	}
 	return
