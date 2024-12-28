@@ -1,8 +1,10 @@
 package interaction
 
+const repeatCount = 5
+
 func Repeat(char string) (repeated string) {
-	for i := 0; i < 5; i++ {
-		repeated = repeated + char
+	for i := 0; i < repeatCount; i++ {
+		repeated += char
 	}
 	return
 }
