@@ -1,6 +1,8 @@
 package wallet
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestWallet(t *testing.T) {
 
@@ -44,7 +46,7 @@ func TestWallet(t *testing.T) {
 		startingBalance := Bitcoin(20)
 		wallet := Wallet{startingBalance}
 		err := wallet.Withdraw(Bitcoin(100))
-		assertError(t, err, "cannot withdraw, insufficent funds")
+		assertError(t, err, ErrInsufficentFunds.Error())
 		assertBalance(t, wallet, startingBalance)
 
 	})
