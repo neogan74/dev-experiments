@@ -17,5 +17,5 @@ func MyGreethandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	log.Fatal(http.ListenAndServe(":5000", http.HandleFunc(MyGreethandler()))
+	log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(MyGreethandler)))
 }
