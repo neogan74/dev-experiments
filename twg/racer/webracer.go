@@ -8,7 +8,7 @@ import (
 
 var tenSecondTimeout = 10 * time.Second
 
-func Racer(a, b string, timeout time.Duration) (winner string, err error) {
+func Racer(a, b string) (winner string, err error) {
 	return ConfigurableRacer(a, b, tenSecondTimeout)
 }
 
