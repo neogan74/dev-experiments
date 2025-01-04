@@ -11,6 +11,12 @@ func NewCounter() *Counter {
 	return &Counter{}
 }
 
+func (c *Counter) Dec() {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	c.value--
+}
+
 func (c *Counter) Inc() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
