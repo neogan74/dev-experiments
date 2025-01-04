@@ -15,7 +15,7 @@ func TestCounter(t *testing.T) {
 		assertCounter(t, counter, 3)
 	})
 	t.Run("it runs concurently", func(t *testing.T) {
-		wantedCount := 1000
+		wantedCount := 10000
 		counter := Counter{}
 
 		var wg sync.WaitGroup
