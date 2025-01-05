@@ -36,6 +36,24 @@ func TestServer(t *testing.T) {
 		}
 	})
 
+	t.Run("returns data from store", func(t *testing.T) {
+		data := "Hello, Amaliya"
+		store := &SpyStore{respose: data}
+		svr := Server(store)
+
+		req := httptest.NewRequest(http.MethodGet, "/", nil)
+		responce := httptest.NewRecorder()
+
+		svr.ServeHTTP(responce, req)
+
+		if responce.Body.String() != data {
+			t.Errorf("got %s, want %s", responce.Body.String(), data)
+		}
+		if store.canceled {
+			t.Errorf("it should not have canceled store")
+		}
+	})
+
 	t.Run("tells store to cancel work if request is canceled", func(t *testing.T) {
 		data := "Hello, Geo"
 		strore := &SpyStore{respose: data}
