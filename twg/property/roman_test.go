@@ -3,6 +3,7 @@ package property
 import (
 	"fmt"
 	"testing"
+	"testing/quick"
 )
 
 func TestRomanNumerals(t *testing.T) {
@@ -87,12 +88,28 @@ func TestConvertingToArabic(t *testing.T) {
 		{"1006 gets converted to MVI", 1006, "MVI"},
 		{"798 gets converted to DCCXCVIII", 798, "DCCXCVIII"},
 	}
-	for _, test := range cases[:4] {
+	for _, test := range cases {
 		t.Run(fmt.Sprintf("%q gets converted %d", test.Roman, test.Arabic), func(t *testing.T) {
 			got := ConvertToArabic(test.Roman)
 			if got != test.Arabic {
 				t.Errorf("got %d, want %d", got, test.Arabic)
 			}
 		})
+	}
+}
+
+func TestPropetiesOfConversion(t *testing.T) {
+	assertion := func(arabic uint16) bool {
+		if arabic > 3999 {
+			return true
+		}
+		t.Log("testing", arabic)
+		roman := ConvertToRoman(int(arabic))
+		fromRoman := ConvertToArabic(roman)
+		return fromRoman == int(arabic)
+	}
+
+	if err := quick.Check(assertion, nil); err != nil {
+		t.Error("failed checks", err)
 	}
 }
