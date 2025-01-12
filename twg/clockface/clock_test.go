@@ -1,4 +1,4 @@
-package maths
+package clockface
 
 import (
 	"testing"
