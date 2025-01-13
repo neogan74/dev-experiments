@@ -1,6 +1,7 @@
 package clockface
 
 import (
+	"math"
 	"testing"
 	"time"
 )
@@ -21,6 +22,15 @@ func TestSecondHandAt30Seconds(t *testing.T) {
 
 	want := Point{X: 150, Y: 150 + 90}
 	got := SecondHand(tm)
+
+	if got != want {
+		t.Errorf("Got %v, want %v", got, want)
+	}
+}
+func TestSecondsInRadians(t *testing.T) {
+	thirtySeconds := time.Date(312, time.October, 28, 0, 0, 30, 0, time.UTC)
+	want := math.Pi
+	got := secondsInRadians(thirtySeconds)
 
 	if got != want {
 		t.Errorf("Got %v, want %v", got, want)
