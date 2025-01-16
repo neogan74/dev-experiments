@@ -1,4 +1,4 @@
-package clockface
+package main
 
 import (
 	"fmt"
@@ -6,7 +6,6 @@ import (
 	"os"
 	"time"
 )
-
 
 const svgStart = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -21,7 +20,7 @@ const bezel = `<circle cx="150" cy="150" r="100" style="fill:#fff;stroke:#000;st
 const svgEnd = `</svg>`
 
 func secondHandTag(p Point) string {
-	return fmt.Sprintf(`<line x1="150" y1="150" x2=%f y2="%f"style="fill:none;stroke:#f00;stroke-width:3px;"/>`p.X,p.Y)
+	return fmt.Sprintf(`<line x1="150" y1="150" x2="%f" y2="%f" style="fill:none;stroke:#f00;stroke-width:3px;"/>`, p.X, p.Y)
 }
 
 func main() {
