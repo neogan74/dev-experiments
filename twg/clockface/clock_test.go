@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"strings"
 	"testing"
 	"time"
 )
@@ -63,6 +64,20 @@ func TestSecondHandPoint(t *testing.T) {
 				t.Fatalf("Got %v, want %v", got, c.point)
 			}
 		})
+	}
+}
+
+func TestSVGWritterAtMidnight(t *testing) {
+	tm := time.Date(1337, time.January, 1, 0, 0, 0, 0, time.UTC)
+
+	var b strings.Builder
+	SVGWriter(&b, tm)
+	got := b.String()
+
+	want := `<line x1="150" y1="150" x2="150" y2="60"`
+
+	if !strings.Contains(got, want) {
+		t.Errorf("Expected to find the second hand %v, in the SVG output %v", want, got)
 	}
 }
 
