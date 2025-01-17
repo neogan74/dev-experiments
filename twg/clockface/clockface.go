@@ -2,9 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"os"
-	"time"
 )
 
 const svgStart = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -24,10 +21,10 @@ func secondHandTag(p Point) string {
 }
 
 func main() {
-	t := time.Now()
-	sh := SecondHand(t)
-	io.WriteString(os.Stdout, svgStart)
-	io.WriteString(os.Stdout, bezel)
-	io.WriteString(os.Stdout, secondHandTag(sh))
-	io.WriteString(os.Stdout, svgEnd)
+	// t := time.Now()
+	// sh := SecondHand(w, t)
+	// io.WriteString(os.Stdout, svgStart)
+	// io.WriteString(os.Stdout, bezel)
+	// io.WriteString(os.Stdout, secondHandTag(sh))
+	// io.WriteString(os.Stdout, svgEnd)
 }

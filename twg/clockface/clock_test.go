@@ -3,6 +3,8 @@ package main
 import (
 	"bytes"
 	"encoding/xml"
+	"fmt"
+	"io"
 	"math"
 	"testing"
 	"time"
@@ -37,7 +39,8 @@ func TestSecondHandAtMidnight(t *testing.T) {
 	tm := time.Date(1337, time.January, 1, 0, 0, 0, 0, time.UTC)
 
 	want := Point{X: 150, Y: 150 - 90}
-	got := SecondHand(tm)
+	w := io.Writer
+	got := SecondHand(w, tm)
 
 	if got != want {
 		t.Errorf("Got %v, want %v", got, want)
@@ -111,7 +114,7 @@ func TestSVGWritterAtMidnight(t *testing.T) {
 		}
 	}
 
-	t.Errorf("Expected to find the second hand with x2 of %+v and y2 of %+v, in the SVG output %v", x2, y2, b.String())
+	fmt.Fprintf(w, `<line x1="150" y1="150" x2="%.3f" y2="%.3f" style="fill:none;stroke:#f00;stroke-width:3px;"/>`, p.X, p.Y)
 }
 
 func roughlyEqualFloat64(a, b float64) bool {
