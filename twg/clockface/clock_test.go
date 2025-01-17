@@ -111,13 +111,8 @@ func TestSVGWritterAtMidnight(t *testing) {
 			return
 		}
 	}
-	got := b.String()
 
-	want := `<line x1="150" y1="150" x2="150" y2="60"`
-
-	if !strings.Contains(got, want) {
 		t.Errorf("Expected to find the second hand %v, in the SVG output %v", want, got)
-	}
 }
 
 func roughlyEqualFloat64(a, b float64) bool {
