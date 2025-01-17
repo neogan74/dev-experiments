@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/xml"
 	"math"
-	"strings"
 	"testing"
 	"time"
 )
@@ -94,10 +93,10 @@ func TestSecondHandPoint(t *testing.T) {
 	}
 }
 
-func TestSVGWritterAtMidnight(t *testing) {
+func TestSVGWritterAtMidnight(t *testing.T) {
 	tm := time.Date(1337, time.January, 1, 0, 0, 0, 0, time.UTC)
 
-	var b bytes.Buffer{}
+	b := bytes.Buffer{}
 	SVGWriter(&b, tm)
 
 	svg := SVG{}
@@ -112,7 +111,7 @@ func TestSVGWritterAtMidnight(t *testing) {
 		}
 	}
 
-		t.Errorf("Expected to find the second hand %v, in the SVG output %v", want, got)
+	t.Errorf("Expected to find the second hand %v, in the SVG output %v", want, got)
 }
 
 func roughlyEqualFloat64(a, b float64) bool {
