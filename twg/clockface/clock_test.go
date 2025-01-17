@@ -102,8 +102,8 @@ func TestSVGWritterAtMidnight(t *testing.T) {
 	svg := SVG{}
 	xml.Unmarshal(b.Bytes(), &svg)
 
-	x2 = "150"
-	y2 = "60"
+	x2 := "150"
+	y2 := "60"
 
 	for _, line := range svg.Line {
 		if line.X2 == x2 && line.Y2 == y2 {
@@ -111,7 +111,7 @@ func TestSVGWritterAtMidnight(t *testing.T) {
 		}
 	}
 
-	t.Errorf("Expected to find the second hand %v, in the SVG output %v", want, got)
+	t.Errorf("Expected to find the second hand with x2 of %+v and y2 of %+v, in the SVG output %v", x2, y2, b.String())
 }
 
 func roughlyEqualFloat64(a, b float64) bool {
