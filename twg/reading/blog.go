@@ -1,14 +1,10 @@
-package main
+package reading
+
+import "testing/fstest"
 
 type Post struct {
-	Title, Description, Body string
-	Tags                     []string
 }
 
-var posts []Post
-posts = NewPostsFromFS("some-folder")
-
-
 func NewPostsFromFS(fileSystem fstest.MapFS) []Post {
-	return nil
+	return []Post{{}, {}}
 }
