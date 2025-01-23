@@ -7,3 +7,8 @@ type Post struct {
 
 var posts []Post
 posts = NewPostsFromFS("some-folder")
+
+
+func NewPostsFromFS(fileSystem fstest.MapFS) []Post {
+	return nil
+}
