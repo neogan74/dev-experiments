@@ -7,11 +7,16 @@ import (
 
 func TestNewBlogPosts(t *testing.T) {
 	fs := fstest.MapFS{
-		"hello.md":  {Data: []byte("hi")},
-		"hello2.md": {Data: []byte("hola")},
+		"hello world.md":  {Data: []byte("hi")},
+		"hello-world2.md": {Data: []byte("hola")},
 	}
 
-	posts := NewPostsFromFS(fs)
+	posts, err := NewPostsFromFS(fs)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	if len(posts) != len(fs) {
 		t.Errorf("got %d posts, wanted %d posts", len(posts), len(fs))
 	}
