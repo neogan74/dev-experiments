@@ -15,9 +15,12 @@ func TestNewBlogPosts(t *testing.T) {
 	if err != nil {
 		t.Error("Cannot read posts")
 	}
-	got := posts[0]
-	want := Post{Title: "Post 1"}
 
+	assertPost(t, posts[0], Post{Title: "Post 1"})
+}
+
+func assertPost(t *testing.T, got Post, want Post) {
+	t.Helper()
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %+v posts, wanted %+v posts", got, want)
 	}
