@@ -1,7 +1,7 @@
 package reading
 
 import (
-	"io"
+	"bufio"
 	"io/fs"
 	"testing/fstest"
 )
@@ -36,11 +36,14 @@ func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
 	return newPost(postFile)
 }
 func newPost(postFile fs.File) (Post, error) {
-	postData, err := io.ReadAll(postFile)
-	if err != nil {
-		return Post{}, err
-	}
+	scanner := bufio.NewScanner(postFile)
+	scanner.Scan()
+	titleLine := scanner.Text()
 
-	post := Post{Title: string(postData)[7:]}
+	scanner.Scan()
+	descriptionLine := scanner.Text()
+
+	post := Post{Title: titleLine[7:],
+		Description: descriptionLine[14:]}
 	return post, nil
 }
