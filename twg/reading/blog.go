@@ -2,7 +2,9 @@ package reading
 
 import (
 	"bufio"
+	"io"
 	"io/fs"
+	"strings"
 	"testing/fstest"
 )
 
@@ -11,6 +13,11 @@ type Post struct {
 	Description string
 }
 
+const (
+	titleSeparator       = "Title: "
+	descriptionSeparator = "Description: "
+)
+
 func NewPostsFromFS(fileSystem fstest.MapFS) ([]Post, error) {
 	dir, err := fs.ReadDir(fileSystem, ".")
 	if err != nil {
@@ -18,7 +25,7 @@ func NewPostsFromFS(fileSystem fstest.MapFS) ([]Post, error) {
 	}
 	var posts []Post
 	for _, f := range dir {
-		post, err := getPost(fileSystem, f)
+		post, err := getPost(fileSystem, f.Name())
 		if err != nil {
 			return nil, err
 		}
@@ -27,23 +34,24 @@ func NewPostsFromFS(fileSystem fstest.MapFS) ([]Post, error) {
 	return posts, nil
 }
 
-func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
-	postFile, err := fileSystem.Open(f.Name())
+func getPost(fileSystem fs.FS, fileName string) (Post, error) {
+	postFile, err := fileSystem.Open(fileName)
 	if err != nil {
 		return Post{}, err
 	}
 	defer postFile.Close()
 	return newPost(postFile)
 }
-func newPost(postFile fs.File) (Post, error) {
-	scanner := bufio.NewScanner(postFile)
-	scanner.Scan()
-	titleLine := scanner.Text()
+func newPost(postBody io.Reader) (Post, error) {
+	scanner := bufio.NewScanner(postBody)
 
-	scanner.Scan()
-	descriptionLine := scanner.Text()
+	readMetaLine := func(tagName string) string {
+		scanner.Scan()
+		return strings.TrimPrefix(scanner.Text(), tagName)
+	}
 
-	post := Post{Title: titleLine[7:],
-		Description: descriptionLine[14:]}
-	return post, nil
+	return Post{
+		Title:       readMetaLine(titleSeparator),
+		Description: readMetaLine(descriptionSeparator),
+	}, nil
 }
