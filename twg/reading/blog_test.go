@@ -22,7 +22,8 @@ func TestNewBlogPosts(t *testing.T) {
 		t.Error("Cannot read posts")
 	}
 
-	assertPost(t, posts[0], Post{Title: "Post 1"})
+	assertPost(t, posts[0], Post{Title: "Post 1",
+		Description: "Description 1"})
 }
 
 func assertPost(t *testing.T, got Post, want Post) {

@@ -7,7 +7,8 @@ import (
 )
 
 type Post struct {
-	Title string
+	Title       string
+	Description string
 }
 
 func NewPostsFromFS(fileSystem fstest.MapFS) ([]Post, error) {
