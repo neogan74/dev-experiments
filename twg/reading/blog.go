@@ -7,7 +7,6 @@ import (
 	"io"
 	"io/fs"
 	"strings"
-	"testing/fstest"
 )
 
 type Post struct {
@@ -23,7 +22,7 @@ const (
 	tagsSeparator        = "Tags: "
 )
 
-func NewPostsFromFS(fileSystem fstest.MapFS) ([]Post, error) {
+func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	dir, err := fs.ReadDir(fileSystem, ".")
 	if err != nil {
 		return nil, err
