@@ -7,4 +7,11 @@ type Word struct {
 	Hints           []string
 }
 
-func NewWord(category Category)
+func NewWord(category Category, level DifficultyLevel, text string, hints ...string) *Word {
+	return &Word{
+		Category:        category,
+		DifficultyLevel: level,
+		Text:            text,
+		Hints:           hints,
+	}
+}
