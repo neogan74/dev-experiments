@@ -1,9 +1,9 @@
 package main
 
-type Config struct {
-	Address string
-}
+// type Config struct {
+// 	Address string
+// }
 
-func NewConfig() Config {
-	return Config{Address: ":8088"}
-}
+// func NewConfig() Config {
+// 	return Config{Address: ":8088"}
+// }

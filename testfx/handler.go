@@ -1,27 +1,20 @@
 package main
 
-import (
-	"io"
-	"net/http"
+// type EchoHandler struct {
+// 	log *zap.Logger
+// }
 
-	"go.uber.org/zap"
-)
+// func NewEchoHandler(log *zap.Logger) *EchoHandler {
+// 	return &EchoHandler{log: log}
+// }
 
-type EchoHandler struct {
-	log *zap.Logger
-}
+// func (h *EchoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+// 	_, wErr := io.Copy(w, r.Body)
+// 	if wErr != nil {
+// 		h.log.Error("failed to write response", zap.Error(wErr))
 
-func NewEchoHandler(log *zap.Logger) *EchoHandler {
-	return &EchoHandler{log: log}
-}
+// 		return
+// 	}
 
-func (h *EchoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	_, wErr := io.Copy(w, r.Body)
-	if wErr != nil {
-		h.log.Error("failed to write response", zap.Error(wErr))
-
-		return
-	}
-
-	h.log.Info("handler called successfully")
-}
+// 	h.log.Info("handler called successfully")
+// }
