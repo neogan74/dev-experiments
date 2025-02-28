@@ -1,3 +1,10 @@
+package main
+
+import (
+	"container/heap"
+	"sort"
+)
+
 func findMaximizedCapital(k int, w int, profits []int, capital []int) int {
 	projects := make([][2]int, len(profits))
 	for i := range profits {
