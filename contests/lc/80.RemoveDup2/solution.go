@@ -37,13 +37,17 @@ func removeDuplicates(nums []int) int {
 func main() {
 	nums1 := []int{1, 1, 1, 2, 2, 3}
 	k1 := removeDuplicates(nums1)
+	k22 := removeDuplicates2(nums1)
 	fmt.Println("Пример 1:")
 	fmt.Println("Количество элементов:", k1)
 	fmt.Println("Массив после модификации:", nums1[:k1])
+	fmt.Println("Массив после модификации2:", nums1[:k22])
 
 	nums2 := []int{0, 0, 1, 1, 1, 1, 2, 3, 3}
 	k2 := removeDuplicates(nums2)
+	k3 := removeDuplicates2(nums2)
 	fmt.Println("\nПример 2:")
 	fmt.Println("Количество элементов:", k2)
 	fmt.Println("Массив после модификации:", nums2[:k2])
+	fmt.Println("Массив после модификации2:", nums2[:k3])
 }
