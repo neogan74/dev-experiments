@@ -26,6 +26,6 @@ func main() {
 	router.GET("/", Index)
 	router.GET("/hello/:name", Hello)
 	port := ":8080"
-	logger.Info("Starting server on", port)
+	logger.Info("Starting server", "port", port)
 	log.Fatal(http.ListenAndServe(port, router))
 }
