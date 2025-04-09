@@ -25,8 +25,8 @@ jobs:
 
       - name: Run Go tests in contests/lc/*
         run: |
-          cd contests
-          for dir in $(find ./lc -type d); do
+          cd contests/lc/
+          for dir in $(find ./ -type d); do
             if ls "$dir"/*_test.go > /dev/null 2>&1; then
               echo "Running tests in $dir"
               go test -v "$dir"
