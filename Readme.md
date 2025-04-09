@@ -1,3 +1,2 @@
-# ACADEMY BACKEND
+# Repo for experiments and tasks
 
-## PROJECT 1 (HANGMAN)
