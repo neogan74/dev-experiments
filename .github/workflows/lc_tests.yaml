@@ -45,4 +45,6 @@ jobs:
               version: latest
               args: '' # <-- отключает автоматический запуск
       - name: Run golangci-lint
-        run: golangci-lint run ./contests/lc/...
+        run: |
+          cd contests/lc/
+          golangci-lint run ./...
