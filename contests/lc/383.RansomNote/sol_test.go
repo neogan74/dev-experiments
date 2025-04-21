@@ -8,8 +8,9 @@ import (
 func TestOne(t *testing.T) {
 	got := one()
 	want := "coll"
+
 	if got != want {
-		fmt.Errorf("got %s, want %s", got, want)
+		_ = fmt.Errorf("got %s, want %s", got, want)
 	}
 }
 
