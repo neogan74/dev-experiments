@@ -13,13 +13,19 @@ func min(a, b int64) int64 {
 
 func main() {
 	var m int64
-	fmt.Scan(&m)
+	_, err := fmt.Scan(&m)
+	if err != nil {
+		panic(err)
+	}
 
 	const INF int64 = 1e18
 
 	a := make([]int64, 31)
 	for i := 0; i <= 30; i++ {
-		fmt.Scan(&a[i])
+		_, err = fmt.Scan(&a[i])
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	// Улучшаем цены: a[i] = min(a[i], a[i-1]*2)
