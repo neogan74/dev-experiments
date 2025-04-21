@@ -8,10 +8,10 @@ func TestCountGoodIntegers(t *testing.T) {
 		expected int64
 	}{
 		{1, 1, 9},
-		{2, 1, 90},
+		{2, 1, 9},
 		{2, 11, 9},
-		{3, 1, 252},
-		{4, 2, 90},
+		{3, 1, 243},
+		{4, 2, 172},
 	}
 
 	for _, tt := range tests {
