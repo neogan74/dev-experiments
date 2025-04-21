@@ -30,7 +30,11 @@ func countGoodNumbers(n int64) int {
 func main() {
 	var n int64
 	fmt.Print("Enter n: ")
-	fmt.Scan(&n)
+	_, err := fmt.Scan(&n)
+	if err != nil {
+		fmt.Println("Error: ", err)
+		return
+	}
 
 	fmt.Println(countGoodNumbers(n))
 }
