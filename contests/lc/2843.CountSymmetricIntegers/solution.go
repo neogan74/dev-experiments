@@ -12,13 +12,13 @@ func countSymmetricIntegers(low int, high int) int {
 		if len(s)%2 != 0 {
 			continue
 		}
-		half := len(s) / 2
-		left, right := 0, 0
-		for i := 0; i < half; i++ {
-			left += int(s[i] - '0')
-			right += int(s[i+half] - '0')
+		m := len(s) / 2
+		leftSum, rightSum := 0, 0
+		for i := 0; i < m; i++ {
+			leftSum += int(s[i] - '0')
+			rightSum += int(s[i+m] - '0')
 		}
-		if left == right {
+		if leftSum == rightSum {
 			count++
 		}
 	}
