@@ -1,7 +1,6 @@
 package _8_CountAndSay
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -34,10 +33,4 @@ func nextSequence(s string) string {
 	next += strconv.Itoa(count)
 	next += string(s[len(s)-1])
 	return next
-}
-
-func main() {
-	for i := 1; i <= 10; i++ {
-		fmt.Printf("n = %d → %s\n", i, countAndSay(i))
-	}
 }
