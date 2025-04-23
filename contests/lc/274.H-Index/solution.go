@@ -8,7 +8,7 @@ import (
 func hIndex(citations []int) int {
 	sort.Ints(citations)
 	n := len(citations)
-	for i, _ := range citations {
+	for i := range citations {
 		h := n - i // Number of papers with at least `citations[i]` citations
 		if citations[i] >= h {
 			return h // Maximum valid `h` found
