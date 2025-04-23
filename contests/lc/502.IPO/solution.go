@@ -2,6 +2,7 @@ package main
 
 import (
 	"container/heap"
+	"fmt"
 	"sort"
 )
 
@@ -44,4 +45,9 @@ func (h *MaxHeap) Pop() interface{} {
 	x := old[n-1]
 	*h = old[0 : n-1]
 	return x
+}
+
+func main() {
+	res := findMaximizedCapital(2, 0, []int{1, 2, 3}, []int{0, 1, 1})
+	fmt.Println(res)
 }
