@@ -15,7 +15,7 @@ func generateTestData(n, maxVal int) []int {
 }
 
 func BenchmarkCountGoodTripletsNaive(b *testing.B) {
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	arr := generateTestData(100, 100)
 	a, bVal, c := 10, 10, 10
 
