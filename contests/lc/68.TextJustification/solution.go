@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 func fullJustify(words []string, maxWidth int) []string {
 	var res []string
@@ -35,4 +38,9 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func main() {
+	res := fullJustify([]string{"This", "is", "an", "example", "of", "text", "justification."}, 16)
+	fmt.Println(res)
 }
