@@ -1,7 +1,5 @@
 package _81_RabbitsinForest
 
-import "fmt"
-
 // numRabbits возвращает минимальное число кроликов в лесу,
 // зная для каждого ответа answers[i] = сколько других кроликов того же цвета видел i‑й.
 func numRabbits(answers []int) int {
@@ -20,10 +18,4 @@ func numRabbits(answers []int) int {
 	}
 
 	return total
-}
-
-func main() {
-	fmt.Println(numRabbits([]int{1, 1, 2}))          // 5
-	fmt.Println(numRabbits([]int{0, 0, 1, 1, 1}))    // 6
-	fmt.Println(numRabbits([]int{2, 2, 2, 2, 2, 2})) // 6  (две группы по 3)
 }
