@@ -1,7 +1,6 @@
 package _28_SummaryRanges
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -30,9 +29,4 @@ func summaryRanges(nums []int) []string {
 		i = j + 1
 	}
 	return res
-}
-
-func main() {
-	fmt.Println(summaryRanges([]int{0, 1, 2, 4, 5, 7}))    // ["0->2","4->5","7"]
-	fmt.Println(summaryRanges([]int{0, 2, 3, 4, 6, 8, 9})) // ["0","2->4","6","8->9"]
 }
