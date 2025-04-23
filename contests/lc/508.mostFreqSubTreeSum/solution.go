@@ -1,7 +1,6 @@
 package main
 
-func main() {
-}
+import "fmt"
 
 type TreeNode struct {
 	Val   int
@@ -36,4 +35,14 @@ func findFrequentTreeSum(root *TreeNode) []int {
 		}
 	}
 	return result
+}
+
+func main() {
+	root := &TreeNode{Val: 5}
+	root.Left = &TreeNode{Val: 2}
+	root.Right = &TreeNode{Val: -3}
+	root.Left.Left = &TreeNode{Val: -4}
+	root.Left.Right = &TreeNode{Val: 1}
+	root.Right.Right = &TreeNode{Val: 11}
+	fmt.Println(findFrequentTreeSum(root))
 }
