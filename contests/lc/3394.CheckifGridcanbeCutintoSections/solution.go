@@ -85,10 +85,12 @@ func canCutGrid(grid []string, horizontalCuts int, verticalCuts int) bool {
 	return true
 }
 
+// getSum
 func getSum(prefix [][]int, r1, c1, r2, c2 int) int {
 	return prefix[r2+1][c2+1] - prefix[r1][c2+1] - prefix[r2+1][c1] + prefix[r1][c1]
 }
 
+// checkValidCuts
 func checkValidCuts(n int, rectangles [][]int) bool {
 	var xIntervals, yIntervals [][]int
 
@@ -128,4 +130,5 @@ func max(a, b int) int {
 func main() {
 	a := canCutGrid([]string{"101101", "111111", "000111", "110100", "110000", "110110", "110100", "011000", "000000", "011111", "000110", "001000", "110101", "101000", "100010"}, 5, 5)
 	fmt.Println(a)
+	checkValidCuts(10, [][]int{{0, 0, 4, 4}, {0, 0, 1, 1}, {1, 0, 2, 1}, {1, 2, 3, 0}, {2, 1, 3, 2}, {2, 2, 4, 3}, {2, 3, 4, 4}})
 }
