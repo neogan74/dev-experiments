@@ -34,6 +34,24 @@ func removeDuplicates(nums []int) int {
 	return i
 }
 
+func removeDuplicates2(nums []int) int {
+	j := 0
+	i := 0
+	l := len(nums)
+	for j < l {
+		if j < l-2 && nums[j] == nums[j+2] {
+			j++
+			continue
+		}
+		if j < l {
+			nums[i] = nums[j]
+			i++
+			j++
+		}
+	}
+	return i
+}
+
 func main() {
 	nums1 := []int{1, 1, 1, 2, 2, 3}
 	k1 := removeDuplicates(nums1)
