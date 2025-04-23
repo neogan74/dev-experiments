@@ -15,7 +15,7 @@ type RandomizedSet struct {
 // NewRandomizedSet инициализирует новый объект RandomizedSet.
 func NewRandomizedSet() *RandomizedSet {
 	// Инициализируем генератор случайных чисел
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	return &RandomizedSet{
 		values:  []int{},
 		indices: make(map[int]int),
