@@ -1,6 +1,9 @@
 package main
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 func canCutGrid(grid []string, horizontalCuts int, verticalCuts int) bool {
 	rows, cols := len(grid), len(grid[0])
@@ -122,7 +125,7 @@ func max(a, b int) int {
 	return b
 }
 
-// func main() {
-// 	n := 5
-// 	// rectangles :=  [[1,0,5,2]]
-// }
+func main() {
+	a := canCutGrid([]string{"101101", "111111", "000111", "110100", "110000", "110110", "110100", "011000", "000000", "011111", "000110", "001000", "110101", "101000", "100010"}, 5, 5)
+	fmt.Println(a)
+}
