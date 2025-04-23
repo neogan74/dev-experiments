@@ -8,7 +8,7 @@ import (
 
 // Создание анаграммы заданной длины из случайных букв [a-z]
 func generateAnagramPair(length int) (string, string) {
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	letters := []rune("abcdefghijklmnopqrstuvwxyz")
 	s := make([]rune, length)
 	for i := range s {
