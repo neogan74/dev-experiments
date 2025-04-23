@@ -10,9 +10,7 @@ func minOperations(grid [][]int, x int) int {
 	values := []int{}
 
 	for _, row := range grid {
-		for _, val := range row {
-			values = append(values, val)
-		}
+		values = append(values, row...)
 	}
 
 	sort.Ints(values)
