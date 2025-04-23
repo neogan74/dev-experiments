@@ -31,6 +31,8 @@ func BenchmarkIsAnagramMap(b *testing.B) {
 	s, t := generateAnagramPair(10000)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		isAnagramUnicode(s, t)
+		unicode := isAnagramUnicode(s, t)
+		_ = unicode
 	}
+
 }
