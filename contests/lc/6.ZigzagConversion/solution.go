@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  * Idea: create a list of strings with the number of rows
  * iterate through the string and add the character to the corresponding row
@@ -30,4 +32,8 @@ func convert(s string, numRows int) string {
 		ret += rows[i]
 	}
 	return ret
+}
+
+func main() {
+	fmt.Println(convert("PAYPALISHIRING", 3))
 }
