@@ -66,6 +66,62 @@ func numberOfSubstrings(word string, k int) int64 {
 	return result
 }
 
+func countOfSubstrings2(word string, k int) int64 {
+	isVowel := make([]bool, 128) // To mark vowels
+	freq := make([]int, 128)     // To track character frequency
+	vowels := "aeiou"
+
+	// Mark vowels in the isVowel array
+	for _, v := range vowels {
+		isVowel[v] = true
+	}
+
+	var response int64 = 0
+	currentK, vowelCount, extraLeft, left := 0, 0, 0, 0
+
+	for right := 0; right < len(word); right++ {
+		rightChar := word[right]
+
+		if isVowel[rightChar] {
+			freq[rightChar]++
+			if freq[rightChar] == 1 {
+				vowelCount++
+			}
+		} else {
+			currentK++
+		}
+
+		// Shrink the window if consonant count exceeds k
+		for currentK > k {
+			leftChar := word[left]
+			if isVowel[leftChar] {
+				freq[leftChar]--
+				if freq[leftChar] == 0 {
+					vowelCount--
+				}
+			} else {
+				currentK--
+			}
+			left++
+			extraLeft = 0
+		}
+
+		// Adjust left pointer to remove extra vowels
+		for vowelCount == 5 && currentK == k && left < right && isVowel[word[left]] && freq[word[left]] > 1 {
+			extraLeft++
+			freq[word[left]]--
+			left++
+		}
+
+		// Count valid substrings
+		if currentK == k && vowelCount == 5 {
+			response += int64(1 + extraLeft)
+		}
+	}
+
+	return response
+}
+
 // Helper function: returns true if ch is a vowel.
 func isVowel(ch byte) bool {
 	return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'
@@ -76,14 +132,17 @@ func main() {
 	word1 := "aeioqq"
 	k1 := 1
 	fmt.Println(numberOfSubstrings(word1, k1)) // Expected output: 0
+	fmt.Println(countOfSubstrings2(word1, k1)) // Expected output: 0
 
 	// Example 2
 	word2 := "aeiou"
 	k2 := 0
 	fmt.Println(numberOfSubstrings(word2, k2)) // Expected output: 1
+	fmt.Println(countOfSubstrings2(word2, k2)) // Expected output: 1
 
 	// Example 3
 	word3 := "ieaouqqieaouqq"
 	k3 := 1
 	fmt.Println(numberOfSubstrings(word3, k3)) // Expected output: 3
+	fmt.Println(countOfSubstrings2(word3, k3)) // Expected output: 3
 }
