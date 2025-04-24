@@ -1,7 +1,5 @@
 package _02_HappyNumber
 
-import "fmt"
-
 // sumOfSquares возвращает сумму квадратов цифр n.
 func sumOfSquares(n int) int {
 	sum := 0
@@ -25,11 +23,4 @@ func isHappy(n int) bool {
 		n = sumOfSquares(n)
 	}
 	return true
-}
-
-func main() {
-	tests := []int{19, 2, 1, 7, 116}
-	for _, n := range tests {
-		fmt.Printf("isHappy(%d) = %v\n", n, isHappy(n))
-	}
 }
