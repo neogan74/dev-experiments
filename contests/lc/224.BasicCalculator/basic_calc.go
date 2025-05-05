@@ -1,7 +1,6 @@
 package _224_BasicCalculator
 
 import (
-	"fmt"
 	"unicode"
 )
 
@@ -48,9 +47,9 @@ func calculate(s string) int {
 	return result
 }
 
-func main() {
-	fmt.Println(calculate("1 + 1"))               // 2
-	fmt.Println(calculate(" 2-1 + 2 "))           // 3
-	fmt.Println(calculate("(1+(4+5+2)-3)+(6+8)")) // 23
-	fmt.Println(calculate("1 + (2 - (3 + 4))"))   // -4
-}
+// func main() {
+// 	fmt.Println(calculate("1 + 1"))               // 2
+// 	fmt.Println(calculate(" 2-1 + 2 "))           // 3
+// 	fmt.Println(calculate("(1+(4+5+2)-3)+(6+8)")) // 23
+// 	fmt.Println(calculate("1 + (2 - (3 + 4))"))   // -4
+// }
