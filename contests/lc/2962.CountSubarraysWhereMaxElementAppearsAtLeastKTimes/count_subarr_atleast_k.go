@@ -1,7 +1,5 @@
 package _962_CountSubarraysWhereMaxElementAppearsAtLeastKTimes
 
-import "fmt"
-
 func countSubarrays(nums []int, k int) int64 {
 	maxNum := 0
 	for _, num := range nums {
@@ -31,7 +29,7 @@ func countSubarrays(nums []int, k int) int64 {
 	return result
 }
 
-func main() {
-	fmt.Println(countSubarrays([]int{1, 3, 2, 3, 3}, 2)) // 6
-	fmt.Println(countSubarrays([]int{1, 4, 2, 1}, 3))    // 0
-}
+// func main() {
+// 	fmt.Println(countSubarrays([]int{1, 3, 2, 3, 3}, 2)) // 6
+// 	fmt.Println(countSubarrays([]int{1, 4, 2, 1}, 3))    // 0
+// }
