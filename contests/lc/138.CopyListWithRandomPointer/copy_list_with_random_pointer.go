@@ -1,12 +1,6 @@
 package _138_copy_list_with_random_pointers
 
-type Node struct {
-	Val    int
-	Next   *Node
-	Random *Node
-}
-
-func copyRandomList(head *Node) *Node {
+func copyRandomList2(head *Node) *Node {
 	if head == nil {
 		return nil
 	}
