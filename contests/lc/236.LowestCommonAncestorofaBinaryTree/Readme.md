@@ -4,8 +4,7 @@ Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in
 
 According to the [definition of LCA](https://en.wikipedia.org/wiki/Lowest_common_ancestor) on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a **node to be a descendant of itself**).”
 
-
-## Example 1:
+## Example 1
 
 ![ex1](image-1.png)
 
@@ -15,7 +14,7 @@ According to the [definition of LCA](https://en.wikipedia.org/wiki/Lowest_common
 >
 > **Explanation**: The LCA of nodes 5 and 1 is 3.
 
-## Example 2:
+## Example 2
 
 ![ex2](image.png)
 
@@ -25,14 +24,13 @@ According to the [definition of LCA](https://en.wikipedia.org/wiki/Lowest_common
 >
 > **Explanation**: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
 
-## Example 3:
+## Example 3
 
 > **Input**: root = [1,2], p = 1, q = 2
 >
 > **Output**: 1
- 
 
-## Constraints:
+## Constraints
 
 - The number of nodes in the tree is in the range `[2, 10^5]`.
 - `-109 <= Node.val <= 109`
