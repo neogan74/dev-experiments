@@ -4,6 +4,8 @@ Given the `root` of a binary tree, return *the level order traversal of its node
 
 ## Example 1
 
+![ex1](image.png)
+
 > **Input**: root = [3,9,20,null,null,15,7]
 >
 > **Output**: [[3],[9,20],[15,7]]
