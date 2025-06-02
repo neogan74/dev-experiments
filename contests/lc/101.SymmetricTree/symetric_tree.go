@@ -7,15 +7,18 @@ type TreeNode struct {
 }
 
 func isSymmetric(root *TreeNode) bool {
-	var dfs func(root1, root2 *TreeNode) bool
-	dfs = func(root1, root2 *TreeNode) bool {
-		if root1 == root2 {
-			return true
-		}
-		if root1 == nil || root2 == nil || root1.Val != root2.Val {
-			return false
-		}
-		return dfs(root1.Left, root2.Right) && dfs(root1.Right, root2.Left)
+	if root == nil {
+		return true
 	}
-	return dfs(root.Left, root.Right)
+	return isMirror(root.Left, root.Right)
+}
+
+func isMirror(t1, t2 *TreeNode) bool {
+	if t1 == nil && t2 == nil {
+		return true
+	}
+	if t1 == nil || t2 == nil || t1.Val != t2.Val {
+		return false
+	}
+	return isMirror(t1.Left, t2.Right) && isMirror(t1.Right, t2.Left)
 }
