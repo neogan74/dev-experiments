@@ -20,6 +20,14 @@ func Test_minSum(t *testing.T) {
 			},
 			want: 12,
 		},
+		{
+			name: "Test 2",
+			args: args{
+				nums1: []int{2, 0, 2, 0},
+				nums2: []int{1, 4},
+			},
+			want: -1,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
