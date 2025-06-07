@@ -1,4 +1,4 @@
-package _3373_max_the_num_of_target_nodes
+package _3373_max_the_num_of_target_nodes_after
 
 func maxTargetNodes(edges1 [][]int, edges2 [][]int) []int {
 	g1 := build(edges1)
