@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package _135_candy
 
 func candy(ratings []int) int {
 	n := len(ratings)
@@ -34,9 +30,4 @@ func candy(ratings []int) int {
 	}
 
 	return total
-}
-
-func main() {
-	fmt.Println(candy([]int{1, 0, 2})) // ожидаем: 5
-	fmt.Println(candy([]int{1, 2, 2})) // ожидаем: 4
 }

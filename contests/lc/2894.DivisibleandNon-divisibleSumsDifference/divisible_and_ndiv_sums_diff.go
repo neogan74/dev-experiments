@@ -1,12 +1,8 @@
 package _2894_DivisibleandNon_divisibleSumsDifference
 
-func differenceOfSum(nums []int, m int) (ans int) {
-	for i := 1; i <= n; i++ {
-		if i%m == 0 {
-			ans -= i
-		} else {
-			ans += i
-		}
-	}
-	return
+func differenceOfSums(n int64, m int64) int64 {
+	total := n * (n + 1) / 2
+	k := n / m
+	sumDiv := m * (k * (k + 1) / 2)
+	return total - 2*sumDiv
 }
