@@ -26,6 +26,7 @@ func Test_maxProfit(t *testing.T) {
 				k:      2,
 				prices: []int{2, 4, 1},
 			},
+			want: 2,
 		},
 	}
 	for _, tt := range tests {
