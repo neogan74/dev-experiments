@@ -4,26 +4,42 @@ import "testing"
 
 func Test_differenceOfSum(t *testing.T) {
 	type args struct {
-		nums []int
-		m    int
+		n int64
+		m int64
 	}
 	tests := []struct {
 		name    string
 		args    args
-		wantAns int
+		wantAns int64
 	}{
 		{
-			name: "test1",
+			name: "test 1",
 			args: args{
-				nums: []int{1, 2, 3, 4, 5, 6},
-				m:    2,
+				n: 10,
+				m: 3,
 			},
 			wantAns: 19,
+		},
+		{
+			name: "test 2",
+			args: args{
+				n: 5,
+				m: 6,
+			},
+			wantAns: 15,
+		},
+		{
+			name: "test 3",
+			args: args{
+				n: 5,
+				m: 1,
+			},
+			wantAns: -15,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotAns := differenceOfSum(tt.args.nums, tt.args.m); gotAns != tt.wantAns {
+			if gotAns := differenceOfSums(tt.args.n, tt.args.m); gotAns != tt.wantAns {
 				t.Errorf("differenceOfSum() = %v, want %v", gotAns, tt.wantAns)
 			}
 		})
