@@ -11,8 +11,7 @@ func longestPalindrome(words []string) int {
 			x += v & 1
 			ans += v / 2 * 2 * 2
 		} else {
-			rk := string([]byte{k[1], k[0]})
-			if y, ok := cnt[rk]; ok {
+			if y, ok := cnt[string(k[1])+string(k[0])]; ok {
 				ans += min(v, y) * 2
 			}
 		}
