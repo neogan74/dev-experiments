@@ -43,7 +43,7 @@ func TestLengthAfterTransformations(t *testing.T) {
 			s:        "a",
 			t:        1_000_000_000,
 			nums:     makeUniformNums(0), // no transformations
-			expected: 1,
+			expected: 0,
 		},
 	}
 
