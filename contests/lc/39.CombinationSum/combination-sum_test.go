@@ -1,11 +1,11 @@
 package _39_CombinationSum
 
 import (
-	"crypto/rand"
-	"encoding/binary"
 	"fmt"
+	"math/rand"
 	"reflect"
 	"testing"
+	"time"
 )
 
 func Test_combinationSum(t *testing.T) {
@@ -54,17 +54,14 @@ func Test_combinationSum(t *testing.T) {
 
 // Генерация случайного массива для тестирования
 func generateRandomArray(size, maxVal int) []int {
+	// Создаем новый источник случайных чисел
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
 	arr := make([]int, size)
 	for i := 0; i < size; i++ {
-		// Read 8 bytes for a uint64
-		b := make([]byte, 8)
-		_, err := rand.Read(b)
-		if err != nil {
-			return nil
-		}
-		// Convert bytes to uint64 and then to int, taking modulo maxVal
-		val := int(binary.BigEndian.Uint64(b) % uint64(maxVal))
-		arr[i] = val
+		// Генерируем случайное число от 0 до maxVal-1
+		arr[i] = r.Intn(maxVal)
 	}
 	return arr
 }
