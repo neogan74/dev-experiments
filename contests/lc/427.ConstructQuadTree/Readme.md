@@ -30,7 +30,7 @@ We can construct a Quad-Tree from a two-dimensional area using the following ste
 
 If you want to know more about the Quad-Tree, you can refer to the [wiki](https://en.wikipedia.org/wiki/Quadtree).
 
-## Quad-Tree format:
+## Quad-Tree format
 
 You don't need to read this section for solving the problem. This is only if you want to understand the output format here. The output represents the serialized format of a Quad-Tree using level order traversal, where null signifies a path terminator where no node exists below.
 
