@@ -1,6 +1,8 @@
 package findingpairswithacertainsum
 
-func TestFindSumPais(t *testing) {
+import "testing"
+
+func TestFindSumPais(t *testing.T) {
 	obj := Constructor([]int{1, 2, 3}, []int{3, 4})
 	// Test 1
 	got := obj.Count(5)
