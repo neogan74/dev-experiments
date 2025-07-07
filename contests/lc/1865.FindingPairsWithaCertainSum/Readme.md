@@ -10,9 +10,8 @@ Implement the `FindSumPairs` class:
 - F`indSumPairs(int[] nums1, int[] nums2)` Initializes the `FindSumPairs` object with two integer arrays `nums1` and `nums2`.
 - `void add(int index, int val)` Adds `val` to `nums2[index]`, i.e., apply `nums2[index] += val`.
 - `int count(int tot)` Returns the number of pairs `(i, j)` such that `nums1[i] + nums2[j] == tot`.
- 
 
-## Example 1:
+## Example 1
 
 > **Input**
 >
