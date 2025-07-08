@@ -23,7 +23,7 @@ func Test_maxEvents(t *testing.T) {
 			args: args{
 				events: [][]int{{1, 2}, {2, 3}, {3, 4}, {1, 2}},
 			},
-			want: 3,
+			want: 4,
 		},
 	}
 	for _, tt := range tests {
