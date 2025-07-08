@@ -104,7 +104,7 @@ func TestModIntInvAndDiv(t *testing.T) {
 		want ModInt
 	}{
 		{10, 2, ModInt(5)},
-		{7, 3, ModInt(7 * ModInt(3).Pow(MOD-2).Mul(1))},
+		{7, 3, ModInt(333333338)},
 		{1, 1, ModInt(1)},
 	}
 
