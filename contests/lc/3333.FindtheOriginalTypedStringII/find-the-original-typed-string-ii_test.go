@@ -137,7 +137,7 @@ func TestPossibleStringCount(t *testing.T) {
 			name: "Simple case",
 			word: "aabbc",
 			k:    3,
-			want: 6, // 2*2*1 = 4 (возможные строки с 3 группами)
+			want: 4, // 2*2*1 = 4 (возможные строки с 3 группами)
 		},
 		{
 			name: "Single character",
@@ -161,13 +161,13 @@ func TestPossibleStringCount(t *testing.T) {
 			name: "k greater than groups",
 			word: "aabb",
 			k:    3,
-			want: 0, // невозможно получить 3 группы из 2 групп
+			want: 3, // невозможно получить 3 группы из 2 групп
 		},
 		{
 			name: "Complex case",
 			word: "aaabbbccc",
 			k:    2,
-			want: 81, // 3*3*3 = 27 (возможные строки с 2 группами)
+			want: 27, // 3*3*3 = 27 (возможные строки с 2 группами)
 		},
 	}
 
