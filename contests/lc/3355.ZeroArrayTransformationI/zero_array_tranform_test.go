@@ -50,3 +50,5 @@ func Test_isZeroArray(t *testing.T) {
 		})
 	}
 }
+
+// TODO 1: add benchmark
