@@ -12,7 +12,7 @@ Return true if it is possible to transform nums into a Zero Array after processi
 
 ## Example 1
 
-> **Input**: nums = [1,0,1], queries = [[0,2]]
+> **Input**: nums = [1,0,1], queries = [0,2]
 >
 > **Output**: true
 >
