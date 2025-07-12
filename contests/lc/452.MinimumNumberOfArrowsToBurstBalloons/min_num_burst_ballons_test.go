@@ -11,7 +11,6 @@ func Test_findMinArrowShots(t *testing.T) {
 		args    args
 		wantAns int
 	}{
-		// TODO: Add test cases.
 		{
 			name: "Example 1",
 			args: args{
@@ -45,3 +44,5 @@ func Test_findMinArrowShots(t *testing.T) {
 		})
 	}
 }
+
+// TODO: need benchmark
