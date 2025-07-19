@@ -11,46 +11,45 @@ A **Zero Array** is an array with all its elements equal to 0.
 
 Return the **maximum** number of elements that can be removed from `queries`, such that `nums` can still be converted to a **zero array** using the *remaining* queries. If it is not possible to convert `nums` to a **zero array**, return -1.
 
+## Example 1
 
-## Example 1:
-
->Input: nums = [2,0,2], queries = [[0,2],[0,2],[1,1]]
+> **Input**: nums = [2,0,2], queries = [[0,2],[0,2],[1,1]]
 >
-> Output: 1
+> **Output**: 1
 >
-> Explanation:
+> **Explanation**:
 >
 > After removing queries[2], nums can still be converted to a zero array.
 >
->Using queries[0], decrement nums[0] and nums[2] by 1 and nums[1] by 0.
+> Using queries[0], decrement nums[0] and nums[2] by 1 and nums[1] by 0.
 >
 > Using queries[1], decrement nums[0] and nums[2] by 1 and nums[1] by 0.
 
-## Example 2:
+## Example 2
 
->nput: nums = [1,1,1,1], queries = [[1,3],[0,2],[1,3],[1,2]]
+> **Input**: nums = [1,1,1,1], queries = [[1,3],[0,2],[1,3],[1,2]]
 >
->Output: 2
+> **Output**: 2
 >
->Explanation:
+> **Explanation**:
 >
 > We can remove queries[2] and queries[3].
 
-## Example 3:
+## Example 3
 
->Input: nums = [1,2,3,4], queries = [[0,3]]
+> **Input**: nums = [1,2,3,4], queries = [0,3]
 >
-> Output: -1
+> **Output**: -1
 >
-> Explanation:
+> **Explanation**:
 >
 > nums cannot be converted to a zero array even after using all the queries.
 
-
-## Constraints:
+## Constraints
 
 - `1 <= nums.length <= 10^5`
 - `0 <= nums[i] <= 10^5`
 - `1 <= queries.length <= 10^5`
 - `queries[i].length == 2`
 - `0 <= li <= ri < nums.length`
+

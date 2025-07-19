@@ -14,7 +14,7 @@ Given the `root` of a binary tree, return *the level order traversal of its node
 
 > **Input**: root = [1]
 >
-> **Output**: [[1]]
+> **Output**: [1]
 
 ## Example 3
 
@@ -26,3 +26,4 @@ Given the `root` of a binary tree, return *the level order traversal of its node
 
 - The number of nodes in the tree is in the range `[0, 2000]`.
 - `-1000 <= Node.val <= 1000`
+
