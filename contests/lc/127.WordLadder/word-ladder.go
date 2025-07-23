@@ -48,7 +48,7 @@ func ladderLength2(beginWord string, endWord string, wordList []string) int {
 	extend := func() int {
 		for i := len(q1); i > 0; i-- {
 			s := q1[0]
-			step, _ := m1[s]
+			step := m1[s]
 			q1 = q1[1:]
 			chars := []byte(s)
 			for j := 0; j < len(chars); j++ {
