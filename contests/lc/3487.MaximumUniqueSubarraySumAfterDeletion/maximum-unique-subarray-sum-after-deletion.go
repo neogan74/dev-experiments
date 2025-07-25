@@ -1,33 +1,25 @@
 package maximumuniquesubarraysumafterdeletion
 
+import "math"
+
 func maximumUniqueSubarraySumAfterDeletion(nums []int) int {
-	n := len(nums)
-	if n == 0 {
-		return 0
-	}
-
-	maxSum := 0
-	currentSum := 0
-	left := 0
-	numCount := make(map[int]int)
-
-	for right := 0; right < n; right++ {
-		numCount[nums[right]]++
-		currentSum += nums[right]
-
-		for numCount[nums[right]] > 1 {
-			numCount[nums[left]]--
-			currentSum -= nums[left]
-			left++
+	unique := map[int]int{}
+	smallestNegative := -math.MaxInt
+	sum := 0
+	found := false
+	for _, n := range nums {
+		if _, ok := unique[n]; !ok {
+			if n >= 0 {
+				unique[n]++
+				sum += n
+				found = true
+			} else {
+				smallestNegative = max(smallestNegative, n)
+			}
 		}
-
-		if left > 0 {
-			currentSum -= nums[left-1]
-			numCount[nums[left-1]]--
-		}
-
-		maxSum = max(maxSum, currentSum)
 	}
-
-	return maxSum
+	if !found {
+		return smallestNegative
+	}
+	return sum
 }
