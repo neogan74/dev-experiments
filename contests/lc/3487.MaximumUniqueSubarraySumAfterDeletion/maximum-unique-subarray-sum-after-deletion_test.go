@@ -14,15 +14,14 @@ func TestMaximumUniqueSubarraySumAfterDeletion(t *testing.T) {
 		nums     []int
 		expected int
 	}{
-		{[]int{}, 0},
 		{[]int{1, 2, 3, 4, 5}, 15},
-		{[]int{4, 2, 4, 5, 6}, 6},
-		{[]int{1, 2, 1, 3, 4, 2, 3}, 7},
+		{[]int{4, 2, 4, 5, 6}, 17},
+		{[]int{1, 2, 1, 3, 4, 2, 3}, 10},
 		{[]int{5, 5, 5, 5, 5}, 5},
-		{[]int{1, 2, 3, 2, 1, 4, 5}, 7},
+		{[]int{1, 2, 3, 2, 1, 4, 5}, 15},
 		{[]int{2, 2, 2, 2, 2, 2}, 2},
 		{[]int{1}, 1},
-		{[]int{1, 2, 3, 1, 2, 3, 4, 5}, 6},
+		{[]int{1, 2, 3, 1, 2, 3, 4, 5}, 15},
 	}
 
 	for _, tt := range tests {
