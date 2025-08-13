@@ -22,13 +22,13 @@ Return the **maximum** number of subarrays possible after removing exactly one c
 
 ## Example 2
 
-> **Input**: n = 5, conflictingPairs = [[1,2],[2,5],[3,5]]
+> **Input**: n = 5, conflictingPairs = `[[1,2],[2,5],[3,5]]`
 >
 > **Output**: 12
 >
 > **Explanation**:
 >
-> Remove [1, 2] from conflictingPairs. Now, conflictingPairs = [[2, 5], [3, 5]].
+> Remove [1, 2] from conflictingPairs. Now, conflictingPairs = `[[2, 5], [3, 5]]`.
 > 
 > There are 12 subarrays in nums where [2, 5] and [3, 5] do not appear together.
 > 

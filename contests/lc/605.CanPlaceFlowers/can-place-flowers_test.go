@@ -26,7 +26,6 @@ func Test_canPlaceFlowers(t *testing.T) {
 				flowerbed: []int{1, 0, 0, 0, 1},
 				n:         2,
 			},
-			want: false,
 		},
 	}
 	for _, tt := range tests {
