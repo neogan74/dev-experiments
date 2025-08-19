@@ -8,11 +8,11 @@ Given a `m * n` matrix of ones and zeros, return how many **square** submatrices
 >
 > [
 >
->  [0,1,1,1],
+> [0,1,1,1],
 >
->  [1,1,1,1],
+> [1,1,1,1],
 >
->  [0,1,1,1]
+> [0,1,1,1]
 > ]
 >
 > **Output**: 15
@@ -29,14 +29,14 @@ Given a `m * n` matrix of ones and zeros, return how many **square** submatrices
 
 ## Example 2
 
-> **Input**: matrix = 
+> **Input**: matrix =
 > [
 >
->  [1,0,1],
+> [1,0,1],
 >
->  [1,1,0],
+> [1,1,0],
 >
->  [1,1,0]
+> [1,1,0]
 >
 > ]
 >
