@@ -18,7 +18,8 @@ Return the integer as the final result.
 > **Output**: 42
 >
 > **Explanation**:
->```
+>
+```text
 > The underlined characters are what is read in and the caret is the current reader position.
 >
 > Step 1: "42" (no characters read because there is no leading whitespace)
@@ -67,7 +68,7 @@ Return the integer as the final result.
 > **Output**: 0
 >
 > **Explanation**:
->```
+>```text
 > Step 1: "0-1" (no characters read because there is no leading whitespace)
 >         ^
 > Step 2: "0-1" (no characters read because there is neither a '-' nor '+')
