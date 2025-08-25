@@ -16,11 +16,13 @@ Return an array `answers`, equal in length to `queries`, where `answers[i]` is t
 >
 > For n = 15, powers = [1,2,4,8]. It can be shown that powers cannot be a smaller size.
 >
+>```text
 >Answer to 1st query: powers[0] * powers[1] = 1 * 2 = 2.
 >
 > Answer to 2nd query: powers[2] = 4.
 >
 > Answer to 3rd query: powers[0] * powers[1] * powers[2] * powers[3] = 1 * 2 * 4 * 8 = 64.
+>```
 >
 > Each answer modulo 109 + 7 yields the same answer, so [2,4,64] is returned.
 
