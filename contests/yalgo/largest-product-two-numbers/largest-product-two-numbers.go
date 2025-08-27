@@ -1,4 +1,4 @@
-package largestproducttwonumbers
+package main
 
 import (
 	"bufio"
