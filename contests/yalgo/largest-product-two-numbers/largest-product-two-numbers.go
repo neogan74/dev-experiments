@@ -14,7 +14,11 @@ func main() {
 	var numbers []int64
 	for scanner.Scan() {
 		var num int64
-		fmt.Sscan(scanner.Text(), &num)
+		_, err := fmt.Sscan(scanner.Text(), &num)
+		if err != nil {
+			fmt.Println("Error parsing number:", err)
+			return
+		}
 		numbers = append(numbers, num)
 	}
 
