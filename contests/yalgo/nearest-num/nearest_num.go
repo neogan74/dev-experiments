@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -38,8 +39,14 @@ func main() {
 	}
 
 	out := bufio.NewWriter(os.Stdout)
-	out.WriteString(strconv.Itoa(best))
-	out.WriteByte('\n')
+	_, err := out.WriteString(strconv.Itoa(best))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+	}
+	err = out.WriteByte('\n')
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err)
+	}
 	out.Flush()
 }
 
