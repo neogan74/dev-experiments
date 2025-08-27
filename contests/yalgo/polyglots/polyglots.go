@@ -104,7 +104,10 @@ func Solution2() {
 		}
 		for range n {
 			var lang string
-			fmt.Fscan(reader, &lang)
+			_, err := fmt.Fscan(reader, &lang)
+			if err != nil {
+				panic(err)
+			}
 			m[lang]++
 		}
 	}
