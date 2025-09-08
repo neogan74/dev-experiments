@@ -24,3 +24,13 @@ func TestCountLines(t *testing.T) {
 		t.Errorf("Expected %d, but got %d lines instead.", want, got)
 	}
 }
+
+func TestCountBytes(t *testing.T) {
+	b := bytes.NewBufferString("word1 word2\n line2 word3\n line3 word4\n")
+	want := 38
+
+	got := count(b, false, true)
+	if want != got {
+		t.Errorf("Expected %d, but got %d lines instead.", want, got)
+	}
+}
