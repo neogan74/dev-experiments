@@ -19,8 +19,9 @@ func TestCountLines(t *testing.T) {
 	b := bytes.NewBufferString("word1 word2\n line2 word3\n line3 word4\n")
 	want := 3
 
-	got := count(b, true)
+	got := count(b, true, false)
 	if want != got {
 		t.Errorf("Expected %d, but got %d lines instead.", want, got)
 	}
 }
+
