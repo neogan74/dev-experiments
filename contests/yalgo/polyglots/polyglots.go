@@ -89,13 +89,19 @@ func Solution2() {
 	reader := bufio.NewReaderSize(os.Stdin, 1024)
 
 	var N int
-	fmt.Fscan(reader, &N)
+	_, err := fmt.Fscan(reader, &N)
+	if err != nil {
+		panic(err)
+	}
 
 	m := make(map[string]int, 500)
 
 	for range N {
 		var n int
-		fmt.Fscan(reader, &n)
+		_, err := fmt.Fscan(reader, &n)
+		if err != nil {
+			panic(err)
+		}
 		for range n {
 			var lang string
 			fmt.Fscan(reader, &lang)
