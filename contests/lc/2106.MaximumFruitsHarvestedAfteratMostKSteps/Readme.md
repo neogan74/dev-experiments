@@ -34,6 +34,7 @@ Return *the **maximum total number** of fruits you can harvest*.
 > You can move at most k = 4 steps, so you cannot reach position 0 nor 10.
 >
 > The optimal way is to:
+>
 > - Harvest the 7 fruits at the starting position 5
 > - Move left to position 4 and harvest 1 fruit
 > - Move right to position 6 and harvest 2 fruits
@@ -53,7 +54,6 @@ Return *the **maximum total number** of fruits you can harvest*.
 > You can move at most k = 2 steps and cannot reach any position with fruits.
 
 ## Constraints
-
 
 - `1 <= fruits.length <= 10^5`
 - `fruits[i].length == 2`

@@ -26,7 +26,7 @@ A **subarray** is a contiguous non-empty sequence of elements within an array.
 > - Starting at index 3, the shortest subarray that yields the maximum bitwise OR is [1,3].
 > - Starting at index 4, the shortest subarray that yields the maximum bitwise OR is [3].
 >
-> Therefore, we return [3,3,2,2,1]. 
+> Therefore, we return [3,3,2,2,1].
 
 ## Example 2
 
