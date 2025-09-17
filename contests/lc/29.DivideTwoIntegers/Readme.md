@@ -24,7 +24,7 @@ Return the **quotient** after dividing `dividend` by `divisor`.
 >
 > **Explanation**: 7/-3 = -2.33333.. which is truncated to -2.
 
- ## Constraints
+## Constraints
 
 - `-2^31 <= dividend, divisor <= 2^31 - 1`
 - `divisor != 0`
