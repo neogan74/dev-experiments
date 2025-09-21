@@ -50,8 +50,8 @@ func Constructor(n int, entries [][]int) MovieRentingSystem {
 
 }
 
-func (this *MovieRentingSystem) Search(movie int) []int {
-	movies, ok := this.unrentedMovies[movie]
+func (mrs *MovieRentingSystem) Search(movie int) []int {
+	movies, ok := mrs.unrentedMovies[movie]
 	if !ok {
 		return nil
 	}
@@ -74,19 +74,19 @@ func (this *MovieRentingSystem) Search(movie int) []int {
 
 }
 
-func (this *MovieRentingSystem) Rent(shop int, movie int) {
+func (mrs *MovieRentingSystem) Rent(shop int, movie int) {
 
 	key := IndexKey{
 		Shop:  shop,
 		Movie: movie,
 	}
 
-	rentingMovie := this.indexingKeyOffset[key.String()]
+	rentingMovie := mrs.indexingKeyOffset[key.String()]
 	if rentingMovie == nil {
 		return
 	}
 
-	heap.Remove(this.unrentedMovies[movie], rentingMovie.Offset)
+	heap.Remove(mrs.unrentedMovies[movie], rentingMovie.Offset)
 	//remove from heap min
 	// add into rentedMovie List
 	rentedMovie := &RentingMovie{
@@ -95,17 +95,17 @@ func (this *MovieRentingSystem) Rent(shop int, movie int) {
 		Price:    rentingMovie.Price,
 		IsRented: true,
 	}
-	this.rentedMovies[key.String()] = rentedMovie
-	heap.Push(this.rentedMovieHeap, rentedMovie)
+	mrs.rentedMovies[key.String()] = rentedMovie
+	heap.Push(mrs.rentedMovieHeap, rentedMovie)
 }
 
-func (this *MovieRentingSystem) Drop(shop int, movie int) {
+func (mrs *MovieRentingSystem) Drop(shop int, movie int) {
 
 	key := IndexKey{
 		Shop:  shop,
 		Movie: movie,
 	}
-	m, ok := this.rentedMovies[key.String()]
+	m, ok := mrs.rentedMovies[key.String()]
 	if !ok {
 		return
 	}
@@ -114,20 +114,20 @@ func (this *MovieRentingSystem) Drop(shop int, movie int) {
 		Movie: movie,
 		Price: m.Price,
 	}
-	this.indexingKeyOffset[key.String()] = rentingMovie
+	mrs.indexingKeyOffset[key.String()] = rentingMovie
 
-	heap.Push(this.unrentedMovies[movie], rentingMovie)
+	heap.Push(mrs.unrentedMovies[movie], rentingMovie)
 
-	heap.Remove(this.rentedMovieHeap, m.Offset)
+	heap.Remove(mrs.rentedMovieHeap, m.Offset)
 
-	delete(this.rentedMovies, key.String())
+	delete(mrs.rentedMovies, key.String())
 }
 
-func (this *MovieRentingSystem) Report() [][]int {
+func (mrs *MovieRentingSystem) Report() [][]int {
 	result := make([][]int, 0, 5)
 	historicals := make([]*RentingMovie, 0, 5)
-	for this.rentedMovieHeap.Len() > 0 && len(historicals) < 5 {
-		item := heap.Pop(this.rentedMovieHeap)
+	for mrs.rentedMovieHeap.Len() > 0 && len(historicals) < 5 {
+		item := heap.Pop(mrs.rentedMovieHeap)
 		m := item.(*RentingMovie)
 		historicals = append(historicals, m)
 		result = append(result, []int{m.Shop, m.Movie})
@@ -136,7 +136,7 @@ func (this *MovieRentingSystem) Report() [][]int {
 		return nil
 	}
 	for _, item := range historicals {
-		heap.Push(this.rentedMovieHeap, item)
+		heap.Push(mrs.rentedMovieHeap, item)
 	}
 	return result
 }
