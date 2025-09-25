@@ -2,6 +2,9 @@ package triangle
 
 import "testing"
 
+// Test_minimumTotal exercises the helper with both the canonical example and a
+// single-element edge case to ensure the bottom-up DP handles varied triangle
+// depths and values.
 func Test_minimumTotal(t *testing.T) {
 	type args struct {
 		triangle [][]int
