@@ -3,6 +3,12 @@ from typing import List
 
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
+        """Return the minimum path sum from top to bottom of ``triangle``.
+
+        The algorithm runs bottom-up, collapsing each row into a 1-D buffer so
+        the time complexity stays O(n^2) while the additional space remains
+        linear in the width of the triangle.
+        """
         if not triangle:
             return 0
 
