@@ -60,6 +60,10 @@ func BenchmarkLargestTriangleArea(b *testing.B) {
 			name:   "grid_7x7",
 			points: benchmarkGridPoints(7),
 		},
+		{
+			name:   "grid_max",
+			points: benchmarkRectGridPoints(5, 10),
+		},
 	}
 
 	for _, tc := range cases {
@@ -74,9 +78,13 @@ func BenchmarkLargestTriangleArea(b *testing.B) {
 }
 
 func benchmarkGridPoints(n int) [][]int {
-	points := make([][]int, 0, n*n)
-	for i := 0; i < n; i++ {
-		for j := 0; j < n; j++ {
+	return benchmarkRectGridPoints(n, n)
+}
+
+func benchmarkRectGridPoints(width, height int) [][]int {
+	points := make([][]int, 0, width*height)
+	for i := 0; i < width; i++ {
+		for j := 0; j < height; j++ {
 			points = append(points, []int{i, j})
 		}
 	}
