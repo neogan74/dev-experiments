@@ -42,3 +42,43 @@ func TestLargestTriangleArea(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkLargestTriangleArea(b *testing.B) {
+	cases := []struct {
+		name   string
+		points [][]int
+	}{
+		{
+			name:   "small",
+			points: [][]int{{0, 0}, {0, 1}, {1, 0}, {0, 2}, {2, 0}},
+		},
+		{
+			name:   "grid_5x5",
+			points: benchmarkGridPoints(5),
+		},
+		{
+			name:   "grid_7x7",
+			points: benchmarkGridPoints(7),
+		},
+	}
+
+	for _, tc := range cases {
+		tc := tc
+		b.Run(tc.name, func(b *testing.B) {
+			b.ReportAllocs()
+			for i := 0; i < b.N; i++ {
+				largestTriangleArea(tc.points)
+			}
+		})
+	}
+}
+
+func benchmarkGridPoints(n int) [][]int {
+	points := make([][]int, 0, n*n)
+	for i := 0; i < n; i++ {
+		for j := 0; j < n; j++ {
+			points = append(points, []int{i, j})
+		}
+	}
+	return points
+}
