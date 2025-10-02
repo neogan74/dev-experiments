@@ -1,6 +1,9 @@
 package _100_WaterBottlesII
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func Test_maxBottlesDrunk(t *testing.T) {
 	type args struct {
@@ -33,6 +36,27 @@ func Test_maxBottlesDrunk(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := maxBottlesDrunk(tt.args.numBottles, tt.args.numExchange); got != tt.want {
 				t.Errorf("maxBottlesDrunk() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Benchmark_maxBottlesDrunk(b *testing.B) {
+	cases := []struct {
+		name        string
+		numBottles  int
+		numExchange int
+	}{
+		{name: "SmallExchange", numBottles: 10, numExchange: 3},
+		{name: "MidExchange", numBottles: 40, numExchange: 6},
+		{name: "LargeExchange", numBottles: 100, numExchange: 12},
+	}
+
+	for _, tc := range cases {
+		b.Run(fmt.Sprintf("%s_%d_%d", tc.name, tc.numBottles, tc.numExchange), func(b *testing.B) {
+			b.ReportAllocs()
+			for i := 0; i < b.N; i++ {
+				maxBottlesDrunk(tc.numBottles, tc.numExchange)
 			}
 		})
 	}
