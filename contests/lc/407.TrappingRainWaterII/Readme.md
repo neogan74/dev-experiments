@@ -46,6 +46,15 @@ Initial heights (top view)
 - **Step 3 – Propagate inward**: The ring of `2`s is now treated as boundary height 3. Continue the BFS-like expansion. When the center cell `1` is visited, it traps `3 - 1 = 2` units, and the effective wall remains height 3.
 - **Step 4 – Completion**: Once all cells are visited the accumulated trapped water totals `10`. The heap ensures we always expand from the safest (lowest) boundary first, mirroring how water seeps inward in reality.
 
+## Alternative: Binary Search + BFS
+
+- Pick a water level `L` and run a BFS from every boundary cell whose height is **below** `L`. During the search only move through cells whose height is also below `L`; these are leak paths where water could escape.
+- After the BFS, any interior cell with `height < L` that was **not** visited is trapped behind higher walls, so it holds `L - height` units of water at that level.
+- Binary search `L` over the range `[minHeight, maxHeight]` to find the highest level that still lets some cell leak. The search narrows to the exact level at which each enclosed basin fills.
+- Accumulate the trapped water contribution at each step; because `m, n ≤ 200`, the repeated BFS runs (≈ `log maxHeight` times) finish comfortably fast.
+- This formulation trades the priority queue for repeated whole-grid BFS sweeps, which can be easier to reason about when debugging with explicit water levels.
+- A reference implementation of this idea lives in `trapping-rain-water-ii.go:46` as `trapRainWaterBinary`.
+
 ## Constraints
 
 - `m == heightMap.length`
