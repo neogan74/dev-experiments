@@ -35,6 +35,17 @@ func TestPacificAtlantic(t *testing.T) {
 				{4, 0},
 			},
 		},
+		{
+			name: "case 2",
+			args: args{
+				heights: [][]int{
+					{1},
+				},
+			},
+			want: [][]int{
+				{0, 0},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
