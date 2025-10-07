@@ -45,3 +45,82 @@ Return *the minimum time until you can reach the bottom right square `(n - 1, n 
 - `1 <= n <= 50`
 - `0 <= grid[i][j] < n2`
 - Each value `grid[i][j]` is **unique**.
+
+## Python Approaches
+
+### Dijkstra-Style Best-First Search
+
+We can treat each cell as a node in a graph where the cost to enter a cell is the maximum elevation encountered so far along the path. Using a min-heap, we always expand the cell with the smallest current cost, mirroring Dijkstra's algorithm. The first time we pop the bottom-right cell, we have the minimal possible maximum elevation along a valid path.
+
+```python
+from heapq import heappush, heappop
+
+
+class Solution:
+    def swimInWater(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+        target = (n - 1, n - 1)
+        visited = [[False] * n for _ in range(n)]
+        heap = [(grid[0][0], 0, 0)]  # time, row, col
+
+        while heap:
+            time, r, c = heappop(heap)
+            if (r, c) == target:
+                return time
+            if visited[r][c]:
+                continue
+            visited[r][c] = True
+
+            for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < n and 0 <= nc < n and not visited[nr][nc]:
+                    next_time = max(time, grid[nr][nc])
+                    heappush(heap, (next_time, nr, nc))
+
+        return -1
+```
+
+**Complexity**: `O(n^2 log n)` time for the heap operations, `O(n^2)` space for the visited matrix and heap.
+
+### Binary Search + BFS Feasibility Check
+
+Because elevations range from `0` to `n^2 - 1`, we can binary-search the smallest time `t` such that a BFS traversal from `(0, 0)` reaches `(n - 1, n - 1)` using only cells with elevation `<= t`.
+
+```python
+from collections import deque
+
+
+class Solution:
+    def swimInWater(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+
+        def can_reach(limit: int) -> bool:
+            if grid[0][0] > limit:
+                return False
+
+            q = deque([(0, 0)])
+            seen = [[False] * n for _ in range(n)]
+            seen[0][0] = True
+
+            while q:
+                r, c = q.popleft()
+                if (r, c) == (n - 1, n - 1):
+                    return True
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < n and 0 <= nc < n and not seen[nr][nc] and grid[nr][nc] <= limit:
+                        seen[nr][nc] = True
+                        q.append((nr, nc))
+            return False
+
+        lo, hi = 0, n * n - 1
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if can_reach(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+```
+
+**Complexity**: `O(log (n^2) * n^2)` time because each BFS touches at most `n^2` cells, and `O(n^2)` space for the BFS queue and visited flags.
