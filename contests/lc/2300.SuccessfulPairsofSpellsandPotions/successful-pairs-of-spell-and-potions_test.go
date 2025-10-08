@@ -93,3 +93,20 @@ func TestSuccessfulPairsRandomized(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkSuccessfulPairs(b *testing.B) {
+	spells := make([]int, 1000)
+	potions := make([]int, 1000)
+	for i := range spells {
+		spells[i] = i%100 + 1
+	}
+	for i := range potions {
+		potions[i] = (i*3)%100 + 1
+	}
+	success := int64(2500)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		successfulPairs(spells, potions, success)
+	}
+}
