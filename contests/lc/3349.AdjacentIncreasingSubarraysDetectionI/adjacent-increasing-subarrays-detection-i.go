@@ -1,0 +1,1 @@
+package _349_AdjacentIncreasingSubarraysDetectionI
