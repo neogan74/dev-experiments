@@ -13,12 +13,22 @@ import (
 
 // CreateTodo is the resolver for the createTodo field.
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: CreateTodo - createTodo"))
+	if r.Store == nil {
+		return nil, fmt.Errorf("data store not configured")
+	}
+	todo, err := r.Store.CreateTodo(input)
+	if err != nil {
+		return nil, err
+	}
+	return todo, nil
 }
 
 // Todos is the resolver for the todos field.
 func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented: Todos - todos"))
+	if r.Store == nil {
+		return nil, fmt.Errorf("data store not configured")
+	}
+	return r.Store.Todos(), nil
 }
 
 // Mutation returns MutationResolver implementation.
