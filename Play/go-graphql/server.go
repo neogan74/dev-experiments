@@ -11,10 +11,12 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/neogan74/dev-experiments/Play/go-graphql/graph"
+	"github.com/neogan74/dev-experiments/Play/go-graphql/internal/data"
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
 const defaultPort = "8080"
+const defaultSeedPath = "data/seed.json"
 
 func main() {
 	port := os.Getenv("PORT")
@@ -22,7 +24,16 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.New(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
+	store := data.NewStore()
+	if err := store.LoadFromFile(defaultSeedPath); err != nil {
+		log.Printf("load seed data: %v", err)
+	}
+
+	resolvers := &graph.Resolver{
+		Store: store,
+	}
+
+	srv := handler.New(graph.NewExecutableSchema(graph.Config{Resolvers: resolvers}))
 
 	srv.AddTransport(transport.Options{})
 	srv.AddTransport(transport.GET{})
