@@ -1,19 +1,13 @@
-from collections import Counter
+from types import int
 
+class Solution:
+    def nextBeautifulNumber(self, n: int) -> int:
+        for x in count(n + 1):
+            y = x
+            cnt = [0] * 10
+            while y:
+                y, v = divmod(y, 10)
+                cnt[v] += 1
+            if all(v == 0 or i == v for i, v in enumerate(cnt)):
+                return x
 
-def is_numerically_balanced(x: int) -> bool:
-    """Return True when the decimal representation of x is numerically balanced."""
-    counts = Counter(str(x))
-    for digit, freq in counts.items():
-        if freq != int(digit):
-            return False
-    return True
-
-
-def next_beautiful_number(n: int) -> int:
-    """Return the smallest numerically balanced number strictly greater than n."""
-    candidate = n + 1
-    while True:
-        if is_numerically_balanced(candidate):
-            return candidate
-        candidate += 1
