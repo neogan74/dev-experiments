@@ -59,6 +59,7 @@ func main() {
 			}
 		}
 	}
+	// foo
 	if err := sc.Err(); err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(2)
