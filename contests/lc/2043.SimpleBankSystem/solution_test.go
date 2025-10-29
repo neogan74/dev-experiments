@@ -42,3 +42,27 @@ func TestConstructorCopiesInput(t *testing.T) {
 		t.Fatalf("expected constructor to copy input slice; got %d", b.balance[0])
 	}
 }
+
+func TestBankEdgeCases(t *testing.T) {
+	b := Constructor([]int64{100})
+
+	if ok := b.Deposit(1, 0); !ok {
+		t.Fatalf("expected zero deposit to succeed")
+	}
+
+	if ok := b.Withdraw(1, 0); !ok {
+		t.Fatalf("expected zero withdraw to succeed")
+	}
+
+	if ok := b.Transfer(1, 1, 50); !ok {
+		t.Fatalf("expected self-transfer to succeed")
+	}
+
+	if b.balance[0] != 100 {
+		t.Fatalf("expected balance to remain unchanged after self-transfer; got %d", b.balance[0])
+	}
+
+	if ok := b.Deposit(2, 10); ok {
+		t.Fatalf("expected deposit to fail due to invalid account")
+	}
+}
