@@ -66,3 +66,19 @@ func TestBankEdgeCases(t *testing.T) {
 		t.Fatalf("expected deposit to fail due to invalid account")
 	}
 }
+
+func BenchmarkBankOperations(b *testing.B) {
+	template := []int64{100, 200, 300, 400, 500}
+	for i := 0; i < b.N; i++ {
+		bank := Constructor(template)
+		if !bank.Transfer(1, 2, 50) {
+			b.Fatal("transfer failed")
+		}
+		if !bank.Deposit(3, 75) {
+			b.Fatal("deposit failed")
+		}
+		if !bank.Withdraw(4, 40) {
+			b.Fatal("withdraw failed")
+		}
+	}
+}
