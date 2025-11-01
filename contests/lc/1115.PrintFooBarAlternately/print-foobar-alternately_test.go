@@ -19,7 +19,7 @@ func TestNewFooBar(t *testing.T) {
 			args: args{
 				n: 1,
 			},
-			want: FooBar{},
+			want: &FooBar{},
 		},
 	}
 	for _, tt := range tests {
