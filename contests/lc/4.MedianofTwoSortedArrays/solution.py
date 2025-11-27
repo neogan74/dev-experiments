@@ -1,4 +1,3 @@
-
 class Solution:
     def findMedianSortedArrays(self, nums1, nums2):
         # Merge the arrays into a single sorted array.
