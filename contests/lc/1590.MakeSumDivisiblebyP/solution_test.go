@@ -75,3 +75,18 @@ func BenchmarkMinSubarray(b *testing.B) {
 		_ = minSubarray(nums, p)
 	}
 }
+
+func BenchmarkMinSubarray2(b *testing.B) {
+	// Build a sizable input to exercise the O(n) scan.
+	n := 100_000
+	nums := make([]int, n)
+	for i := range nums {
+		nums[i] = i%10 + 1
+	}
+	p := 97
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = minSubarray2(nums, p)
+	}
+}
