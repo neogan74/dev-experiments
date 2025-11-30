@@ -1,30 +1,12 @@
 # [3228. Maximum Number of Operations to Move Ones to the End](https://leetcode.com/problems/maximum-number-of-operations-to-move-ones-to-the-end/description)
 
-You are given a binary string `s`. The goal is to count the maximum number of operations that can be applied while following the rules below.
+You are given a binary string `s`. An operation chooses an index `i` with `s[i] == '1'` and `s[i + 1] == '0'`, then slides that `'1'` to the right until it sits just before the next `'1'` or reaches the end. The task is to count the maximum number of operations that can be performed.
 
-## Operation
-- Choose an index `i` with `i + 1 < s.length` such that `s[i] == '1'` and `s[i + 1] == '0'`.
-- Move `s[i]` to the right until it reaches the end of the string or is directly before another `'1'`.
-  - Example: for `s = "010010"` and `i = 1`, the string becomes `"000110"`.
+## Approach
+- Group the string into runs of `1`s separated by runs of `0`s. Every time a run of `0`s starts immediately after a `'1'`, all `1`s seen so far will eventually cross that boundary exactly once, contributing that many operations.
+- Scan left to right, keeping `ones` as the number of `1`s seen. When `s[i] == '0'` and `s[i - 1] == '1'`, add `ones` to the answer. Other zeros are already inside a zero-run and contribute nothing new.
+- This directly counts the total number of times any `'1'` is moved in an optimal sequence.
 
-## Examples
-**Example 1**
-```
-Input:  s = "1001101"
-Output: 4
-Explanation:
-1. i = 0 → "0011101"
-2. i = 4 → "0011011"
-3. i = 3 → "0010111"
-4. i = 2 → "0001111"
-```
-
-**Example 2**
-```
-Input:  s = "00111"
-Output: 0
-```
-
-## Constraints
-- `1 <= s.length <= 10^5`
-- `s[i] ∈ {'0', '1'}` for every index `i`
+## Complexity
+- Time: `O(n)` — single pass.
+- Space: `O(1)` — constant extras.
