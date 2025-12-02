@@ -37,3 +37,24 @@ func Test_isMatch(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkIsMatch(b *testing.B) {
+	// Примеры входных данных для тестирования
+	testCases := []struct {
+		s, p string
+	}{
+		{"aa", "a*"},
+		{"ab", ".*"},
+		{"aab", "c*a*b"},
+		// Добавьте дополнительные тест-кейсы по мере необходимости
+	}
+
+	// Запуск бенчмарка
+	for _, tc := range testCases {
+		b.Run(tc.s+"_"+tc.p, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				isMatch(tc.s, tc.p)
+			}
+		})
+	}
+}
