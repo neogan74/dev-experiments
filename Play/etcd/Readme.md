@@ -2,6 +2,7 @@
 
 ### **Week 1: Setup & Basics**
 
+
 **Days 1-2: Installation & Single Node**
 - Install etcd locally
 - Explore etcdctl commands (put, get, del)
