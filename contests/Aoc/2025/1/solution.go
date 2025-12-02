@@ -1,48 +1,107 @@
 package main
 
-// func main() {
-// 	// Стартовая позиция
-// 	position := 50
-// 	// Счётчик остановок на нуле
-// 	zeroCount := 0
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
 
-// 	// Открываем файл с входными данными
-// 	file, err := os.Open("./input.txt")
-// 	if err != nil {
-// 		fmt.Println("Ошибка открытия файла:", err)
-// 		return
-// 	}
-// 	defer file.Close()
+func main() {
+	// TODO: can be refactored for using StdOut with flags.
+	part1()
+	part2()
+}
 
-// 	scanner := bufio.NewScanner(file)
+func part1() {
+	// Стартовая позиция
+	position := 50
+	// Счётчик остановок на нуле
+	zeroCount := 0
 
-// 	for scanner.Scan() {
-// 		line := scanner.Text()
-// 		if len(line) < 2 {
-// 			continue
-// 		}
+	// Открываем файл с входными данными
+	file, err := os.Open("./input.txt")
+	if err != nil {
+		fmt.Println("Ошибка открытия файла:", err)
+		return
+	}
+	defer file.Close()
 
-// 		direction := line[0]
-// 		valueStr := line[1:]
-// 		value, err := strconv.Atoi(valueStr)
-// 		if err != nil {
-// 			fmt.Println("Ошибка парсинга числа:", err)
-// 			continue
-// 		}
+	scanner := bufio.NewScanner(file)
 
-// 		// Обновляем позицию
-// 		if direction == 'R' {
-// 			position = (position + value) % 100
-// 		} else if direction == 'L' {
-// 			position = (position - value + 100) % 100
-// 		}
+	for scanner.Scan() {
+		line := scanner.Text()
+		if len(line) < 2 {
+			continue
+		}
 
-// 		// Проверяем, остановились ли мы на нуле
-// 		if position == 0 {
-// 			zeroCount++
-// 		}
-// 	}
+		direction := line[0]
+		valueStr := line[1:]
+		value, err := strconv.Atoi(valueStr)
+		if err != nil {
+			fmt.Println("Ошибка парсинга числа:", err)
+			continue
+		}
 
-// 	// Выводим результат
-// 	fmt.Printf("Количество остановок на нуле: %d\n", zeroCount)
-// }
+		// Обновляем позицию
+		if direction == 'R' {
+			position = (position + value) % 100
+		} else if direction == 'L' {
+			position = (position - value + 100) % 100
+		}
+
+		// Проверяем, остановились ли мы на нуле
+		if position == 0 {
+			zeroCount++
+		}
+	}
+
+	// Выводим результат
+	fmt.Printf("Количество остановок на нуле: %d\n", zeroCount)
+}
+
+func part2() {
+	position := 50
+	zeroCount := 0
+
+	// Открываем файл с входными данными
+	file, err := os.Open("./input.txt")
+	if err != nil {
+		fmt.Println("Ошибка открытия файла:", err)
+		return
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	//scanner := bufio.NewScanner(os.Stdin)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		if len(line) < 2 {
+			continue
+		}
+
+		direction := line[0]
+		valueStr := line[1:]
+		value, err := strconv.Atoi(valueStr)
+		if err != nil {
+			fmt.Println("Ошибка парсинга числа:", err)
+			continue
+		}
+
+		for step := 1; step <= value; step++ {
+			if direction == 'R' {
+				position = (position + 1) % 100
+			} else if direction == 'L' {
+				position = (position - 1 + 100) % 100
+			}
+
+			if position == 0 {
+				zeroCount++
+			}
+		}
+	}
+
+	fmt.Printf("Количество остановок на нуле: %d\n", zeroCount)
+}
