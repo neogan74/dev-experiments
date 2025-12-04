@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -9,18 +10,26 @@ import (
 )
 
 func main() {
+	partTwo := flag.Bool("part2", false, "compute part two (use 12 batteries per bank)")
+	flag.Parse()
+
+	pick := 2
+	if *partTwo {
+		pick = 12
+	}
+
 	lines, err := readInput()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "read input: %v\n", err)
 		os.Exit(1)
 	}
 
-	total := 0
+	var total int64
 	for _, line := range lines {
 		if line == "" {
 			continue
 		}
-		total += maxBankJoltage(line)
+		total += maxBankJoltage(line, pick)
 	}
 
 	fmt.Println(total)
@@ -50,32 +59,37 @@ func readLines(r io.Reader) ([]string, error) {
 	return lines, sc.Err()
 }
 
-// maxBankJoltage picks two digits in order to form the largest possible two-digit number.
-func maxBankJoltage(line string) int {
-	digits := []rune(line)
-	rightMax := make([]int, len(digits))
-
-	// rightMax[i] holds the largest digit strictly to the right of i (or -1 if none).
-	best := -1
-	for i := len(digits) - 1; i >= 0; i-- {
-		rightMax[i] = best
-		if d := int(digits[i] - '0'); d > best {
-			best = d
-		}
+// maxBankJoltage picks `pick` digits in order to form the largest possible number.
+func maxBankJoltage(line string, pick int) int64 {
+	if pick <= 0 {
+		return 0
 	}
 
-	maxVal := 0
-	for i, tensRune := range digits {
-		ones := rightMax[i]
-		if ones == -1 {
-			continue
-		}
-		tens := int(tensRune - '0')
-		val := tens*10 + ones
-		if val > maxVal {
-			maxVal = val
-		}
+	digits := []byte(line)
+	if pick > len(digits) {
+		pick = len(digits)
 	}
 
-	return maxVal
+	// Greedy monotonic stack: drop smaller leading digits when there are enough remaining.
+	stack := make([]byte, 0, len(digits))
+	remaining := len(digits)
+
+	for _, d := range digits {
+		remaining--
+		for len(stack) > 0 && stack[len(stack)-1] < d && len(stack)+remaining >= pick {
+			stack = stack[:len(stack)-1]
+		}
+		stack = append(stack, d)
+	}
+
+	if len(stack) > pick {
+		stack = stack[:pick]
+	}
+
+	var val int64
+	for _, d := range stack {
+		val = val*10 + int64(d-'0')
+	}
+
+	return val
 }
