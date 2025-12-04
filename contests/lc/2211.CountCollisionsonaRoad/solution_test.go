@@ -22,3 +22,10 @@ func TestCountCollisions(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkCountCollisions(b *testing.B) {
+	input := "RRSLLSRRSLRSLLRSRSLLRRSRLSLRRSLLSRS"
+	for i := 0; i < b.N; i++ {
+		_ = countCollisions(input)
+	}
+}
