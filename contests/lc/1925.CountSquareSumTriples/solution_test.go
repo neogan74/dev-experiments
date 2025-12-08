@@ -53,3 +53,15 @@ func TestImplementationsMatch(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkCountTriples(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		countTriples(250)
+	}
+}
+
+func BenchmarkCountTriples2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		countTriples2(250)
+	}
+}
