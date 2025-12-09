@@ -38,3 +38,19 @@ func TestSpecialTripletsWrapper(t *testing.T) {
 		t.Fatalf("specialTriplets: nums=%v: got %d, want 2", nums, got)
 	}
 }
+
+func BenchmarkCountSpecialTriplets(b *testing.B) {
+	nums := []int{8, 4, 2, 8, 4, 16, 8, 4, 2, 1, 2, 4, 8, 16, 32}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = countSpecialTriplets(nums)
+	}
+}
+
+func BenchmarkSpecialTriplets(b *testing.B) {
+	nums := []int{8, 4, 2, 8, 4, 16, 8, 4, 2, 1, 2, 4, 8, 16, 32}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = specialTriplets(nums)
+	}
+}
