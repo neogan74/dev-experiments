@@ -25,6 +25,19 @@ class TestCountSpecialTriplets(unittest.TestCase):
         # Middle value 3 has two doubles on the left and two on the right.
         self.assertEqual(count_special_triplets([6, 6, 3, 6, 6]), 4)
 
+    def test_benchmark_placeholders(self):
+        """
+        Lightweight loop to mimic a micro-benchmark. Python's unittest
+        doesn't have built-in benchmarking, but this keeps parity with Go benchmarks.
+        """
+        from solution import Solution
+
+        nums = [8, 4, 2, 8, 4, 16, 8, 4, 2, 1, 2, 4, 8, 16, 32]
+        solver = Solution()
+        for _ in range(1000):
+            count_special_triplets(nums)
+            solver.specialTriplets(nums)
+
 
 if __name__ == "__main__":
     unittest.main()
