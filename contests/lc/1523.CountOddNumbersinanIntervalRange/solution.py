@@ -6,6 +6,9 @@ class Solution:
                 count += 1
         return count
     
+    def countOdds2(self, low: int, high: int) -> int:
+        # Using mathematical approach
+        return (high + 1) // 2 - low // 2
 
 if __name__ == "__main__":
     sol = Solution()
