@@ -3,7 +3,7 @@ from typing import List
 
 
 class Solution:
-    def validateCoupons(
+    def validCouponCodes(
         self, code: List[str], businessLine: List[str], isActive: List[bool]
     ) -> List[str]:
         order = {
