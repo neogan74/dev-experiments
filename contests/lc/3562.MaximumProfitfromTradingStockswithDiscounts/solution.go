@@ -113,12 +113,12 @@ func maxProfit2(n int, present []int, future []int, hierarchy [][]int, budget in
 
 		// collect children dp (we need both child.dp0 and child.dp1)
 		children := g[u]
-		childDP0 := make([][]int, 0, len(children))
+		// childDP0 := make([][]int, 0, len(children))
 		childDP1 := make([][]int, 0, len(children))
 
 		for _, v := range children {
 			c0, c1 := dfs(v)
-			childDP0 = append(childDP0, c0)
+			// childDP0 = append(childDP0, c0)
 			childDP1 = append(childDP1, c1)
 
 			// merge base with child's dp0  (since u currently NOT buying -> child sees parent NOT bought)
