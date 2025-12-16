@@ -66,7 +66,7 @@ func TestMaxProfit(t *testing.T) {
 			future:    []int{20, 10, 10, 5, 5},
 			hierarchy: [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 5}},
 			budget:    10,
-			expected:  223228,
+			expected:  22,
 		},
 		{
 			name:      "Multiple roots",
@@ -106,7 +106,7 @@ func TestMaxProfit(t *testing.T) {
 			}
 		})
 		t.Run(tt.name, func(t *testing.T) {
-			result := maxProfit(tt.n, tt.present, tt.future, tt.hierarchy, tt.budget)
+			result := maxProfit2(tt.n, tt.present, tt.future, tt.hierarchy, tt.budget)
 			if result != tt.expected {
 				t.Errorf("maxProfit2(%v, %v, %v, %v, %v) = %v; want %v",
 					tt.n, tt.present, tt.future, tt.hierarchy, tt.budget, result, tt.expected)
