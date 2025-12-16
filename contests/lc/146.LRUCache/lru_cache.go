@@ -24,42 +24,42 @@ func Constructor(capacity int) LRUCache {
 	}
 }
 
-func (this *LRUCache) Get(key int) int {
-	if node, exists := this.cache[key]; exists {
-		this.removeNode(node)
-		this.addToHead(node)
+func (lruc *LRUCache) Get(key int) int {
+	if node, exists := lruc.cache[key]; exists {
+		lruc.removeNode(node)
+		lruc.addToHead(node)
 		return node.val
 	}
 	return -1
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if node, exists := this.cache[key]; exists {
-		this.removeNode(node)
+func (lruc *LRUCache) Put(key int, value int) {
+	if node, exists := lruc.cache[key]; exists {
+		lruc.removeNode(node)
 		node.val = value
-		this.addToHead(node)
+		lruc.addToHead(node)
 	} else {
 		node := &Node{key: key, val: value}
-		this.cache[key] = node
-		this.addToHead(node)
-		if this.size++; this.size > this.capacity {
-			node = this.tail.prev
-			delete(this.cache, node.key)
-			this.removeNode(node)
-			this.size--
+		lruc.cache[key] = node
+		lruc.addToHead(node)
+		if lruc.size++; lruc.size > lruc.capacity {
+			node = lruc.tail.prev
+			delete(lruc.cache, node.key)
+			lruc.removeNode(node)
+			lruc.size--
 		}
 	}
 }
 
-func (this *LRUCache) removeNode(node *Node) {
+func (lruc *LRUCache) removeNode(node *Node) {
 	node.prev.next = node.next
 	node.next.prev = node.prev
 }
 
-func (this *LRUCache) addToHead(node *Node) {
-	node.next = this.head.next
-	node.prev = this.head
-	this.head.next = node
+func (lruc *LRUCache) addToHead(node *Node) {
+	node.next = lruc.head.next
+	node.prev = lruc.head
+	lruc.head.next = node
 	node.next.prev = node
 }
 

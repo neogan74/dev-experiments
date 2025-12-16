@@ -23,9 +23,10 @@ func solve(board [][]byte) {
 	}
 	for i, row := range board {
 		for j, c := range row {
-			if c == '.' {
+			switch c {
+			case '.':
 				board[i][j] = 'O'
-			} else if c == 'O' {
+			case 'O':
 				board[i][j] = 'X'
 			}
 		}

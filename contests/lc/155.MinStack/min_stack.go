@@ -11,22 +11,22 @@ func Constructor() MinStack {
 	return MinStack{[]int{}, []int{math.MaxInt32}}
 }
 
-func (this *MinStack) Push(val int) {
-	this.stk1 = append(this.stk1, val)
-	this.stk2 = append(this.stk2, min(val, this.stk2[len(this.stk2)-1]))
+func (st *MinStack) Push(val int) {
+	st.stk1 = append(st.stk1, val)
+	st.stk2 = append(st.stk2, min(val, st.stk2[len(st.stk2)-1]))
 }
 
-func (this *MinStack) Pop() {
-	this.stk1 = this.stk1[:len(this.stk1)-1]
-	this.stk2 = this.stk2[:len(this.stk2)-1]
+func (st *MinStack) Pop() {
+	st.stk1 = st.stk1[:len(st.stk1)-1]
+	st.stk2 = st.stk2[:len(st.stk2)-1]
 }
 
-func (this *MinStack) Top() int {
-	return this.stk1[len(this.stk1)-1]
+func (st *MinStack) Top() int {
+	return st.stk1[len(st.stk1)-1]
 }
 
-func (this *MinStack) GetMin() int {
-	return this.stk2[len(this.stk2)-1]
+func (st *MinStack) GetMin() int {
+	return st.stk2[len(st.stk2)-1]
 }
 
 /**

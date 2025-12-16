@@ -40,7 +40,7 @@ func reverse(head *ListNode, right int) *ListNode {
 	}
 
 	// Save the node following the reversed segment to reconnect later
-	var nextLL *ListNode = head
+	var nextLL = head
 
 	// Get length of the stack
 	lenght := len(stack)

@@ -14,15 +14,15 @@ func Constructor(nums1 []int, nums2 []int) FindSumPairs {
 	return FindSumPairs{nums1, nums2, cnt}
 }
 
-func (this *FindSumPairs) Add(index int, val int) {
-	this.cnt[this.nums2[index]]--
-	this.nums2[index] += val
-	this.cnt[this.nums2[index]]++
+func (fsp *FindSumPairs) Add(index int, val int) {
+	fsp.cnt[fsp.nums2[index]]--
+	fsp.nums2[index] += val
+	fsp.cnt[fsp.nums2[index]]++
 }
 
-func (this *FindSumPairs) Count(tot int) (ans int) {
-	for _, x := range this.nums1 {
-		ans += this.cnt[tot-x]
+func (fsp *FindSumPairs) Count(tot int) (ans int) {
+	for _, x := range fsp.nums1 {
+		ans += fsp.cnt[tot-x]
 	}
 	return
 }
