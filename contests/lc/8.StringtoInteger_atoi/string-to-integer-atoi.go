@@ -14,10 +14,11 @@ func myAtoi(s string) int {
 	}
 
 	sign := 1
-	if s[i] == '-' {
+	switch s[i] {
+	case '-':
 		sign = -1
 		i++
-	} else if s[i] == '+' {
+	case '+':
 		i++
 	}
 
