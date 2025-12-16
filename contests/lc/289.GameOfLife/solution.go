@@ -32,9 +32,10 @@ func gameOfLife(board [][]int) {
 	// нормализация
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			if board[i][j] == -1 {
+			switch board[i][j] {
+			case -1:
 				board[i][j] = 0
-			} else if board[i][j] == 2 {
+			case 2:
 				board[i][j] = 1
 			}
 		}
