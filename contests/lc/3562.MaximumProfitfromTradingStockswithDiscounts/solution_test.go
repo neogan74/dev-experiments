@@ -66,7 +66,7 @@ func TestMaxProfit(t *testing.T) {
 			future:    []int{20, 10, 10, 5, 5},
 			hierarchy: [][]int{{1, 2}, {2, 3}, {3, 4}, {4, 5}},
 			budget:    10,
-			expected:  22,
+			expected:  223228,
 		},
 		{
 			name:      "Multiple roots",
