@@ -11,6 +11,7 @@ func TestTaskManager(t *testing.T) {
 		}
 
 		tm := Constructor(tasks)
+		tm.h.top()
 
 		if user := tm.ExecTop(); user != 3 {
 			t.Fatalf("expected user 3, got %d", user)
