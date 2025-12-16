@@ -56,5 +56,11 @@ func Test_findXSum(t *testing.T) {
 				t.Errorf("findXSum() = %v, want %v", got, tt.want)
 			}
 		})
+		t.Run(tt.name, func(t *testing.T) {
+			got := findXSumTwoHeaps(tt.nums, tt.k, tt.x)
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("findXSum() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
