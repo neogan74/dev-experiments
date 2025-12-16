@@ -3,14 +3,15 @@ package _75_sort_colors
 func sortColors(nums []int) {
 	i, j, k := -1, len(nums), 0
 	for k < j {
-		if nums[k] == 0 {
+		switch nums[k] {
+		case 0:
 			i++
 			nums[i], nums[k] = nums[k], nums[i]
 			k++
-		} else if nums[k] == 2 {
+		case 2:
 			j--
 			nums[j], nums[k] = nums[k], nums[j]
-		} else {
+		default:
 			k++
 		}
 	}
