@@ -16,9 +16,10 @@ func orangesRotting(grid [][]int) int {
 	// Добавляем гнилые апельсины в очередь и считаем свежие
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
-			if grid[i][j] == 2 {
+			switch grid[i][j] {
+			case 2:
 				queue = append(queue, Point{i, j})
-			} else if grid[i][j] == 1 {
+			case 1:
 				fresh++
 			}
 		}
