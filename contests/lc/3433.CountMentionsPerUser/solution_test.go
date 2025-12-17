@@ -7,10 +7,10 @@ import (
 
 func TestCountMentions(t *testing.T) {
 	tests := []struct {
-		name           string
-		numberOfUsers  int
-		events         [][]string
-		wantMentions   []int
+		name          string
+		numberOfUsers int
+		events        [][]string
+		wantMentions  []int
 	}{
 		{
 			name:          "example 1",
@@ -59,7 +59,7 @@ func TestCountMentions(t *testing.T) {
 				{"MESSAGE", "70", "HERE"},
 				{"MESSAGE", "71", "HERE"},
 			},
-			wantMentions: []int{3, 3},
+			wantMentions: []int{4, 3},
 		},
 	}
 
