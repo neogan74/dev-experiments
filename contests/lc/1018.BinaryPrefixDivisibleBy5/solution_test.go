@@ -1,4 +1,4 @@
-package main
+package binaryprefixdivisibleby5
 
 import (
 	"reflect"
