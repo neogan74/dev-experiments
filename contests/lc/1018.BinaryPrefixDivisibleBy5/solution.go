@@ -1,4 +1,4 @@
-package main
+package binaryprefixdivisibleby5
 
 // prefixesDivBy5 returns a boolean slice where each element indicates whether
 // the corresponding binary prefix of nums is divisible by 5. We keep only the
