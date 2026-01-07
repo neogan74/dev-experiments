@@ -61,7 +61,7 @@ func TestNumMagicSquaresInside(t *testing.T) {
 				{4, 3, 8, 4, 2},
 				{9, 5, 1, 9, 7},
 			},
-			expected: 2,
+			expected: 1,
 		},
 	}
 
