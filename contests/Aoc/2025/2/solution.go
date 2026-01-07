@@ -16,6 +16,7 @@ func main() {
 	partTwo := flag.Bool("part2", false, "use part two rules (repeat >= 2 times)")
 	flag.Parse()
 
+	_ = ceilDiv(0, 1) // avoid unused warning
 	// Allow a positional override for the input path to stay convenient.
 	if flag.NArg() > 0 {
 		*inputPath = flag.Arg(0)
