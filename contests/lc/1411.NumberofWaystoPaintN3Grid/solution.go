@@ -1,4 +1,4 @@
-package main
+package numberofwaystopaintn3grid
 
 func numOfWays(n int) int {
 	const mod int64 = 1000000007

@@ -37,7 +37,7 @@ func TestPyramidTransition(t *testing.T) {
 			name:    "branching-success",
 			bottom:  "ABC",
 			allowed: []string{"ABD", "BCE", "BDF", "CEF"},
-			want:    true,
+			want:    false,
 		},
 	}
 
