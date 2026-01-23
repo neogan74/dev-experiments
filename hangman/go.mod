@@ -1,3 +1,3 @@
-module github.com/neogan74/academybackend2024/hangman
+module github.com/neogan74/dev-experiments/hangman
 
 go 1.23.4
